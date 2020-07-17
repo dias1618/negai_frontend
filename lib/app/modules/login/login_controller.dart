@@ -42,7 +42,7 @@ abstract class _LoginControllerBase with Store {
   }
 
   @action 
-  Future login() async{
+  Future login(GlobalKey<FormState> globalKey) async{
     progressDialogService.showLoading('Autenticando...');
 
     RepositoryDto repositoryDto = await usuarioRespository.login(
@@ -54,6 +54,7 @@ abstract class _LoginControllerBase with Store {
     
     if(repositoryDto.statusCode == RepositoryManager.STATUS_OK){
       usuarioStore.usuario = UsuarioModel.fromJson(repositoryDto.data);
+      globalKey.currentState.reset();
       Modular.to.pushReplacementNamed('/home');
     }
     else{

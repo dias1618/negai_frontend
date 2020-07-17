@@ -25,13 +25,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             style: TextStyle(fontSize: (title.length > 10 ? 16.0 : 18.0)),
           ),
         ),
-        leading: (this.leading != null && this.leading
-            ? IconButton(
-                icon: Icon(Icons.arrow_back),
-                onPressed:
-                    (onPressed != null ? onPressed : () => Modular.to.pop()),
-              )
-            : null),
         bottom: bottom,
         actions: <Widget>[
           IconButton(

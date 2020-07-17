@@ -32,8 +32,10 @@ class _EnterComponentState extends State<EnterComponent> {
           ),
           color: Theme.of(context).primaryColor,
           onPressed: (){
-            widget.globalKey.currentState.validate();
-            widget.onPressed();
+            if(!widget.globalKey.currentState.validate()){
+              return;
+            }
+            widget.onPressed(widget.globalKey);
             this._focusNode.requestFocus();
           }, 
           child: Text(

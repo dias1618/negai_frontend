@@ -16,18 +16,17 @@ part 'login_controller.g.dart';
 class LoginController = _LoginControllerBase with _$LoginController;
 
 abstract class _LoginControllerBase with Store {
-
   @observable
   TextEditingController _idController = new TextEditingController();
   @action
-  TextEditingController idController(){
+  TextEditingController idController() {
     return _idController;
   }
 
   @observable
   TextEditingController _senhaController = new TextEditingController();
   @action
-  TextEditingController senhaController(){
+  TextEditingController senhaController() {
     return _senhaController;
   }
 
@@ -35,32 +34,27 @@ abstract class _LoginControllerBase with Store {
   UsuarioRespository usuarioRespository = Modular.get<UsuarioRespository>();
   LoadingManagerService progressDialogService = Modular.get<ProgressLoadingManagerService>();
 
-
   @action
-  Future signup() async{
+  Future signup(GlobalKey<FormState> globalKey) async {
+    globalKey.currentState.reset();
     await Modular.to.pushNamed('/signup');
   }
 
-  @action 
-  Future login(GlobalKey<FormState> globalKey) async{
+  @action
+  Future login(GlobalKey<FormState> globalKey) async {
     progressDialogService.showLoading('Autenticando...');
 
-    RepositoryDto repositoryDto = await usuarioRespository.login(
-      LoginViewModel(
-        login: idController().value.text,
-        senha: senhaController().value.text,
-      )
-    );
-    
-    if(repositoryDto.statusCode == RepositoryManager.STATUS_OK){
+    RepositoryDto repositoryDto = await usuarioRespository.login(LoginViewModel(
+      login: idController().value.text,
+      senha: senhaController().value.text,
+    ));
+
+    if (repositoryDto.statusCode == RepositoryManager.STATUS_OK) {
       usuarioStore.usuario = UsuarioModel.fromJson(repositoryDto.data);
       globalKey.currentState.reset();
       Modular.to.pushReplacementNamed('/home');
-    }
-    else{
+    } else {
       progressDialogService.hideLoading(repositoryDto.statusMessage, MessageManagerService.MESSAGE_ERROR);
     }
   }
-
-  
 }

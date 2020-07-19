@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class EnterComponent extends StatefulWidget {
 
-  final GlobalKey<FormState> globalKey;
   final Function onPressed;
 
-  const EnterComponent({Key key, this.globalKey, this.onPressed}) : super(key: key);  
+  const EnterComponent({Key key, this.onPressed}) : super(key: key);  
 
 
   @override
@@ -14,7 +14,8 @@ class EnterComponent extends StatefulWidget {
 
 class _EnterComponentState extends State<EnterComponent> {
   FocusNode _focusNode = FocusNode();
-  
+  GlobalKey<FormState> globalKey = Modular.get<GlobalKey<FormState>>();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,10 +33,10 @@ class _EnterComponentState extends State<EnterComponent> {
           ),
           color: Theme.of(context).primaryColor,
           onPressed: (){
-            if(!widget.globalKey.currentState.validate()){
+            if(!globalKey.currentState.validate()){
               return;
             }
-            widget.onPressed(widget.globalKey);
+            widget.onPressed(globalKey);
             this._focusNode.requestFocus();
           }, 
           child: Text(

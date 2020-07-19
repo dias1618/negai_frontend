@@ -8,8 +8,8 @@ class AppWidget extends StatelessWidget {
       navigatorKey: Modular.navigatorKey,
       title: 'Áquila',
       theme: ThemeData(
-        primaryColor: Colors.black,
-        accentColor: Colors.brown[600],
+        primaryColor: Colors.brown[900],
+        accentColor: Colors.amber[100],
       ),
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,

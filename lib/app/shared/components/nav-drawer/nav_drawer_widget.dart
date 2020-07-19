@@ -47,7 +47,7 @@ class NavDrawer extends StatelessWidget {
             iconData: Icons.exit_to_app,
             title: 'Logout',
             onTap: () => {
-              Modular.to.pushReplacementNamed('/')
+              Modular.to.popUntil(ModalRoute.withName('/'))
             },
           ),
         ],

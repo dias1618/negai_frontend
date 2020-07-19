@@ -43,8 +43,15 @@ mixin _$LoginController on _LoginControllerBase, Store {
   final _$signupAsyncAction = AsyncAction('_LoginControllerBase.signup');
 
   @override
-  Future<dynamic> signup() {
-    return _$signupAsyncAction.run(() => super.signup());
+  Future<dynamic> signup(GlobalKey<FormState> globalKey) {
+    return _$signupAsyncAction.run(() => super.signup(globalKey));
+  }
+
+  final _$loginAsyncAction = AsyncAction('_LoginControllerBase.login');
+
+  @override
+  Future<dynamic> login(GlobalKey<FormState> globalKey) {
+    return _$loginAsyncAction.run(() => super.login(globalKey));
   }
 
   final _$_LoginControllerBaseActionController =

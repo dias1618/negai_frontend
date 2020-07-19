@@ -16,23 +16,35 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        automaticallyImplyLeading: this.leading,
-        backgroundColor: Theme.of(context).primaryColor,
-        title: Padding(
-          padding: EdgeInsets.only(left: (this.leading ? 0 : 10)),
-          child: new Text(
-            (title != null ? title : "Aquila"),
-            style: TextStyle(fontSize: (title.length > 10 ? 16.0 : 18.0)),
+      iconTheme: IconThemeData(
+        color: Theme.of(context).accentColor
+      ),
+      automaticallyImplyLeading: this.leading,
+      backgroundColor: Theme.of(context).primaryColor,
+      title: Padding(
+        padding: EdgeInsets.only(
+          left: (this.leading ? 0 : 10)
+        ),
+        child: Text(
+          (title != null ? title : "Aquila"),
+          style: TextStyle(
+            color: Theme.of(context).accentColor,
+            fontSize: (title.length > 10 ? 16.0 : 18.0)
           ),
         ),
-        bottom: bottom,
-        actions: <Widget>[
-          IconButton(
-              icon: new Icon(Icons.power_settings_new),
-              onPressed: () {
-                Modular.to.pushNamed("/");
-              })
-        ]);
+      ),
+      bottom: bottom,
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(
+            Icons.power_settings_new,
+          ),
+          onPressed: () {
+            Modular.to.popUntil(ModalRoute.withName('/'));
+          }
+        )
+      ]
+    );
   }
 
   @override

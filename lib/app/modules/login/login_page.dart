@@ -17,18 +17,15 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends ModularState<LoginPage, LoginController> {
-  final _formKey = GlobalKey<FormState>();
+  final _formKey = Modular.get<GlobalKey<FormState>>();
   final loginController = Modular.get<LoginController>();
 
   @override
   Widget build(BuildContext context) {
-    ProgressLoadingManagerService.initProgressDialog(context);    
+    ProgressLoadingManagerService.initProgressDialog(context);
     return Scaffold(
-      resizeToAvoidBottomPadding: true,
-      body: ListView(
-        shrinkWrap: true,
-        reverse: false,
-        children: <Widget>[
+        resizeToAvoidBottomPadding: true,
+        body: ListView(shrinkWrap: true, reverse: false, children: <Widget>[
           Column(
             children: <Widget>[
               new SizedBox(
@@ -36,37 +33,28 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               ),
               LogoComponent(),
               Padding(
-                padding: EdgeInsets.only(
-                  left: 30.0, 
-                  right: 30.0
-                ),
+                padding: EdgeInsets.only(left: 30.0, right: 30.0),
                 child: Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      IdComponent(
-                        idController: loginController.idController(),
-                      ),
-                      SenhaComponent(
-                        senhaController: loginController.senhaController(),
-                      ),
-                      EnterComponent(
-                        globalKey: _formKey,
-                        onPressed: loginController.login,
-                      ),
-                      CadastrarComponent(
-                        onPressed: loginController.signup
-                      )
-                    ]
-                  )
-                ),
+                    key: _formKey,
+                    child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          IdComponent(
+                            idController: loginController.idController(),
+                          ),
+                          SenhaComponent(
+                            senhaController: loginController.senhaController(),
+                          ),
+                          EnterComponent(
+                            onPressed: loginController.login,
+                          ),
+                          CadastrarComponent(
+                            onPressed: loginController.signup)
+                        ])),
               )
             ],
           ),
-        ]
-      )
-    );
+        ]));
   }
 }

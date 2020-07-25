@@ -1,10 +1,12 @@
 import 'package:aquila_frontend_main/app/models/video.model.dart';
+import 'package:aquila_frontend_main/app/modules/home/pages/saiba_mais_page.dart';
 import 'package:aquila_frontend_main/app/services/loading-manager/loading_manager_service.dart';
 import 'package:aquila_frontend_main/app/services/loading-manager/progress_loading_manager_service.dart';
 import 'package:aquila_frontend_main/app/services/message-manager/message_manager_service.dart';
 import 'package:aquila_frontend_main/app/shared/manager-repositories/repository.dto.dart';
 import 'package:aquila_frontend_main/app/shared/manager-repositories/repository_manager.dart';
 import 'package:aquila_frontend_main/app/stores/video.store.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:aquila_frontend_main/app/repositories/video.repository.dart';
@@ -38,9 +40,21 @@ abstract class _HomeControllerBase with Store {
         )
       );
 
-    } else {
+    } 
+    else {
       progressDialogService.hideLoading(repositoryDto.statusMessage, MessageManagerService.MESSAGE_ERROR);
     }
+  }
+
+  @action
+  Future<void> openSaibaMais(context) async{
+    return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return SaibaMaisPage();
+        }
+      );
+
   }
 
 }

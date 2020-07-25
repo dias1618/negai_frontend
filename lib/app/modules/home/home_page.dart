@@ -4,7 +4,6 @@ import 'package:aquila_frontend_main/app/modules/home/components/next_videos_com
 import 'package:aquila_frontend_main/app/modules/home/components/programacao_selection_component.dart';
 import 'package:aquila_frontend_main/app/modules/home/components/rating_video_component.dart';
 import 'package:aquila_frontend_main/app/modules/home/components/title_component.dart';
-import 'package:aquila_frontend_main/app/modules/home/components/youtube_box_component.dart';
 import 'package:aquila_frontend_main/app/shared/components/custom_app_bar_widget.dart';
 import 'package:aquila_frontend_main/app/shared/components/nav-drawer/nav_drawer_widget.dart';
 import 'package:aquila_frontend_main/app/stores/usuario.store.dart';
@@ -105,7 +104,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                   Padding(
                     padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 2.0),
                     child: MoreDescription(
-                      onPressed: (){},
+                      onPressed: homeController.openSaibaMais,
                     )
                   ),
                   Spacer(

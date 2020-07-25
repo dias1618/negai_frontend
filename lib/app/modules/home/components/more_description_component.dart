@@ -19,9 +19,7 @@ class _MoreDescriptionState extends State<MoreDescription> {
       alignment: Alignment.centerLeft,
       child: GestureDetector(
         onTap: () {
-          setState(() {
-            print('chegou');
-          });
+          widget.onPressed(context);
         },
         child: Text(
           'SaibaMais...',

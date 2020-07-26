@@ -16,6 +16,14 @@ mixin _$HomeController on _HomeControllerBase, Store {
     return _$initVideosAsyncAction.run(() => super.initVideos());
   }
 
+  final _$openSaibaMaisAsyncAction =
+      AsyncAction('_HomeControllerBase.openSaibaMais');
+
+  @override
+  Future<void> openSaibaMais(dynamic context) {
+    return _$openSaibaMaisAsyncAction.run(() => super.openSaibaMais(context));
+  }
+
   @override
   String toString() {
     return '''

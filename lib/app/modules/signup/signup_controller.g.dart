@@ -9,6 +9,38 @@ part of 'signup_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$SignupController on _SignupControllerBase, Store {
+  final _$_tabControllerAtom =
+      Atom(name: '_SignupControllerBase._tabController');
+
+  @override
+  TabController get _tabController {
+    _$_tabControllerAtom.reportRead();
+    return super._tabController;
+  }
+
+  @override
+  set _tabController(TabController value) {
+    _$_tabControllerAtom.reportWrite(value, super._tabController, () {
+      super._tabController = value;
+    });
+  }
+
+  final _$listTabViewModelAtom =
+      Atom(name: '_SignupControllerBase.listTabViewModel');
+
+  @override
+  ObservableList<SignupTabViewModel> get listTabViewModel {
+    _$listTabViewModelAtom.reportRead();
+    return super.listTabViewModel;
+  }
+
+  @override
+  set listTabViewModel(ObservableList<SignupTabViewModel> value) {
+    _$listTabViewModelAtom.reportWrite(value, super.listTabViewModel, () {
+      super.listTabViewModel = value;
+    });
+  }
+
   final _$_nomeControllerAtom =
       Atom(name: '_SignupControllerBase._nomeController');
 
@@ -73,6 +105,21 @@ mixin _$SignupController on _SignupControllerBase, Store {
     });
   }
 
+  final _$categoriasAtom = Atom(name: '_SignupControllerBase.categorias');
+
+  @override
+  ObservableList<CategoriaSelecaoViewModel> get categorias {
+    _$categoriasAtom.reportRead();
+    return super.categorias;
+  }
+
+  @override
+  set categorias(ObservableList<CategoriaSelecaoViewModel> value) {
+    _$categoriasAtom.reportWrite(value, super.categorias, () {
+      super.categorias = value;
+    });
+  }
+
   final _$_SignupControllerBaseActionController =
       ActionController(name: '_SignupControllerBase');
 
@@ -123,7 +170,8 @@ mixin _$SignupController on _SignupControllerBase, Store {
   @override
   String toString() {
     return '''
-
+listTabViewModel: ${listTabViewModel},
+categorias: ${categorias}
     ''';
   }
 }

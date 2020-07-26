@@ -9,7 +9,7 @@ class AppWidget extends StatelessWidget {
       title: 'Áquila',
       theme: ThemeData(
         primaryColor: Colors.brown[900],
-        accentColor: Colors.amber[100],
+        accentColor: Colors.brown[200],
       ),
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,

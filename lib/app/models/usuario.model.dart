@@ -1,4 +1,5 @@
 import 'package:aquila_frontend_main/app/models/model.dart';
+import 'package:aquila_frontend_main/app/models/usuario-categoria.model.dart';
 
 class UsuarioModel implements Model {
   int id;
@@ -6,13 +7,16 @@ class UsuarioModel implements Model {
   String login;
   String senha;
 
-  UsuarioModel({this.id, this.nome, this.login, this.senha});
+  List<UsuarioCategoriaModel> categorias;
+
+  UsuarioModel({this.id, this.nome, this.login, this.senha, this.categorias});
 
   UsuarioModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     nome = json['nome'];
     login = json['login'];
     senha = json['senha'];
+    categorias = json['categorias'];
   }
 
   @override
@@ -22,6 +26,7 @@ class UsuarioModel implements Model {
     data['nome'] = this.nome;
     data['login'] = this.login;
     data['senha'] = this.senha;
+    data['categorias'] = this.categorias;
     return data;
   }
 }

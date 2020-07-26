@@ -21,15 +21,15 @@ class DioRepositoryManager implements RepositoryManager{
   }
 
   @override
-  Future<RepositoryDto> execute(ParameterRepository parametros, Model data) async {
+  Future<RepositoryDto> execute(ParameterRepository parametros, dynamic data) async {
     return await create(parametros, data);
   }
 
   @override
-  Future<RepositoryDto> create(ParameterRepository parametros, Model data) async {
+  Future<RepositoryDto> create(ParameterRepository parametros, dynamic data) async {
     try{
       Response response;
-      response = await dio.post(parametros.data['path'], data: data.toJson());
+      response = await dio.post(parametros.data['path'], data: data);
       return RepositoryDto(
         statusCode: RepositoryManager.STATUS_OK, 
         statusMessage: response.statusMessage, 
@@ -99,7 +99,7 @@ class DioRepositoryManager implements RepositoryManager{
   }
 
   @override
-  Future<RepositoryDto> update(ParameterRepository parametros, Model data) async {
+  Future<RepositoryDto> update(ParameterRepository parametros, dynamic data) async {
     // TODO: implement update
     throw UnimplementedError();
   }

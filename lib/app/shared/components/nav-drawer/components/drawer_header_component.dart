@@ -34,17 +34,19 @@ class _DrawerHeaderComponentState extends State<DrawerHeaderComponent> {
           Padding(
             padding: EdgeInsets.only(top: 40.0, left: 20.0),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
                   usuarioStore.usuario.nome,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).accentColor
+                    color: Theme.of(context).accentColor,
                   ),
                 ),
                 Text(
-                  usuarioStore.usuario.nome,
+                  usuarioStore.usuario.email,
                   style: TextStyle(
                     fontSize: 14,
                     fontStyle: FontStyle.italic,

@@ -6,17 +6,19 @@ class UsuarioModel implements Model {
   String nome;
   String login;
   String senha;
+  String email;
 
   List<UsuarioCategoriaModel> categorias;
 
-  UsuarioModel({this.id, this.nome, this.login, this.senha, this.categorias});
+  UsuarioModel({this.id, this.nome, this.login, this.senha, this.email, this.categorias});
 
   UsuarioModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     nome = json['nome'];
     login = json['login'];
     senha = json['senha'];
-    categorias = json['categorias'];
+    email = json['email'];
+    categorias = json['categorias'];    
   }
 
   @override
@@ -26,6 +28,7 @@ class UsuarioModel implements Model {
     data['nome'] = this.nome;
     data['login'] = this.login;
     data['senha'] = this.senha;
+    data['email'] = this.email;
     data['categorias'] = this.categorias;
     return data;
   }

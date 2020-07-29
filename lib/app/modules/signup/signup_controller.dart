@@ -50,6 +50,13 @@ abstract class _SignupControllerBase with Store {
   }
 
   @observable
+  TextEditingController _emailController = new TextEditingController();
+  @action
+  TextEditingController emailController(){
+    return _emailController;
+  }
+
+  @observable
   TextEditingController _senhaController = new TextEditingController();
   @action
   TextEditingController senhaController(){

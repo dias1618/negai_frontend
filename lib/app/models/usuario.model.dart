@@ -29,7 +29,6 @@ class UsuarioModel implements Model {
     data['login'] = this.login;
     data['senha'] = this.senha;
     data['email'] = this.email;
-    data['categorias'] = this.categorias;
     return data;
   }
 }

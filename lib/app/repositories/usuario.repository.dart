@@ -16,7 +16,7 @@ class UsuarioRespository{
     RepositoryDto repositoryDto = await repositoryManager.create(
       ParameterRepository(
         data: {
-          "path": "/usuarios/signup"
+          "path": "/auth/signup"
         }
       ), 
       {
@@ -32,7 +32,7 @@ class UsuarioRespository{
     RepositoryDto repositoryDto = await repositoryManager.execute(
       ParameterRepository(
         data: {
-          "path": "/login"
+          "path": "/auth/login"
         }
       ), 
       LoginViewModel.fromJson({

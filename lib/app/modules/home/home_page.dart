@@ -1,3 +1,4 @@
+import 'package:aquila_frontend_main/app/models/video.model.dart';
 import 'package:aquila_frontend_main/app/modules/home/components/internal_description_component.dart';
 import 'package:aquila_frontend_main/app/modules/home/components/more_description_component.dart';
 import 'package:aquila_frontend_main/app/modules/home/components/next_videos_component.dart';
@@ -84,7 +85,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                     padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 15.0),
                     child: Observer(builder: (_) => InternalDescriptionComponent(
                       name: 'Data de Criação',
-                      text: (videoStore.videos.length > 0 ? DateFormat('dd/MM/yyyy hh:mm').format(videoStore.videoAtual.criado) : ''),
+                      text: (videoStore.videos.length > 0 && videoStore.videoAtual.criado != null ? 
+                        DateFormat('dd/MM/yyyy hh:mm').format(videoStore.videoAtual.criado) : 
+                        'Sem informação'
+                      ),
                     )) 
                   ),
                   Padding(
@@ -110,7 +114,25 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                   Spacer(
                     flex: 1
                   ),
-                  NextVideosComponent(),
+                  //NextVideosComponent(),
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: RawMaterialButton(
+                      onPressed: homeController.passarVideo,
+                      elevation: 2.0,
+                      fillColor: Theme.of(context).primaryColor,
+                      child: Icon(
+                        Icons.forward,
+                        color: Theme.of(context).accentColor,
+                        size: 35.0,
+                      ),
+                      padding: EdgeInsets.all(15.0),
+                      shape: CircleBorder(),
+                    )
+                  ),
+                  Spacer(
+                    flex: 1
+                  ),
                   Padding(
                     padding: EdgeInsets.only(top: 10.0),
                     child: ProgramacaoSelectionComponent()

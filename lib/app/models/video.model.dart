@@ -36,7 +36,7 @@ class VideoModel {
     url = json['url'];
     midia = json['midia'];
     duracao = json['duracao'];
-    criado = DateTime.parse(json['criado']);
+    criado = (json['criado'] != null ? DateTime.parse(json['criado']) : null);
     urlImage = json['urlImage'];
     canal = Canal.fromJson(json['canal']);
     categoria = Categoria.fromJson(json['categoria']);
@@ -51,7 +51,7 @@ class VideoModel {
     data['url'] = this.url;
     data['midia'] = this.midia;
     data['duracao'] = this.duracao;
-    data['criado'] = this.criado;
+    data['criado'] = this.criado.toIso8601String();
     data['urlImage'] = this.urlImage;
     data['canal'] = this.canal.toJson();
     data['categoria'] = this.categoria.toJson();

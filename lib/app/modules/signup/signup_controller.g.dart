@@ -72,6 +72,22 @@ mixin _$SignupController on _SignupControllerBase, Store {
     });
   }
 
+  final _$_emailControllerAtom =
+      Atom(name: '_SignupControllerBase._emailController');
+
+  @override
+  TextEditingController get _emailController {
+    _$_emailControllerAtom.reportRead();
+    return super._emailController;
+  }
+
+  @override
+  set _emailController(TextEditingController value) {
+    _$_emailControllerAtom.reportWrite(value, super._emailController, () {
+      super._emailController = value;
+    });
+  }
+
   final _$_senhaControllerAtom =
       Atom(name: '_SignupControllerBase._senhaController');
 
@@ -140,6 +156,17 @@ mixin _$SignupController on _SignupControllerBase, Store {
         name: '_SignupControllerBase.idController');
     try {
       return super.idController();
+    } finally {
+      _$_SignupControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  TextEditingController emailController() {
+    final _$actionInfo = _$_SignupControllerBaseActionController.startAction(
+        name: '_SignupControllerBase.emailController');
+    try {
+      return super.emailController();
     } finally {
       _$_SignupControllerBaseActionController.endAction(_$actionInfo);
     }

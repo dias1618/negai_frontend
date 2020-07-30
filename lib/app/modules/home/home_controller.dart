@@ -1,10 +1,13 @@
+import 'package:aquila_frontend_main/app/models/usuario-video.model.dart';
 import 'package:aquila_frontend_main/app/models/video.model.dart';
 import 'package:aquila_frontend_main/app/modules/home/pages/saiba_mais_page.dart';
+import 'package:aquila_frontend_main/app/repositories/history.repository.dart';
 import 'package:aquila_frontend_main/app/services/loading-manager/loading_manager_service.dart';
 import 'package:aquila_frontend_main/app/services/loading-manager/progress_loading_manager_service.dart';
 import 'package:aquila_frontend_main/app/services/message-manager/message_manager_service.dart';
 import 'package:aquila_frontend_main/app/shared/manager-repositories/repository.dto.dart';
 import 'package:aquila_frontend_main/app/shared/manager-repositories/repository_manager.dart';
+import 'package:aquila_frontend_main/app/stores/usuario.store.dart';
 import 'package:aquila_frontend_main/app/stores/video.store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -21,7 +24,9 @@ abstract class _HomeControllerBase with Store {
   VideoRepository videoRespository = Modular.get<VideoRepository>();
   VideoStore videoStore = Modular.get<VideoStore>();
   LoadingManagerService progressDialogService = Modular.get<ProgressLoadingManagerService>();
-  
+  HistoryRepository historyRespository = Modular.get<HistoryRepository>();
+  UsuarioStore usuarioStore = Modular.get<UsuarioStore>();
+
   @action
   Future initVideos() async {
     RepositoryDto repositoryDto = await videoRespository.getVideos();
@@ -55,6 +60,25 @@ abstract class _HomeControllerBase with Store {
         }
       );
 
+  }
+
+  @action
+  Future<void> passarVideo() async{
+    VideoModel videoPassado = videoStore.videos.removeAt(0);
+
+    RepositoryDto repositoryDto = await historyRespository.save(new UsuarioVideoModel(
+      usuario: usuarioStore.usuario,
+      video: videoPassado
+    ));
+
+    if (repositoryDto.statusCode == RepositoryManager.STATUS_OK) {
+      videoStore.videoAtual = videoStore.videos.first;
+      videoStore.youtubePlayerController.load(videoStore.videoAtual.idPlatform);
+    }
+    else{
+      progressDialogService.hideLoading(repositoryDto.statusMessage, MessageManagerService.MESSAGE_ERROR);
+    }
+    
   }
 
 }

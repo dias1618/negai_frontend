@@ -27,6 +27,11 @@ abstract class _HomeControllerBase with Store {
   HistoryRepository historyRespository = Modular.get<HistoryRepository>();
   UsuarioStore usuarioStore = Modular.get<UsuarioStore>();
 
+  static final int NOTAPADRAO = 3;
+
+  @observable
+  int notaVideo = NOTAPADRAO;
+
   @action
   Future initVideos() async {
     RepositoryDto repositoryDto = await videoRespository.getVideos();
@@ -65,8 +70,9 @@ abstract class _HomeControllerBase with Store {
   @action
   Future<void> passarVideo() async{
     VideoModel videoPassado = videoStore.videos.removeAt(0);
-
+    
     RepositoryDto repositoryDto = await historyRespository.save(new UsuarioVideoModel(
+      nota: notaVideo,
       usuario: usuarioStore.usuario,
       video: videoPassado
     ));
@@ -74,6 +80,7 @@ abstract class _HomeControllerBase with Store {
     if (repositoryDto.statusCode == RepositoryManager.STATUS_OK) {
       videoStore.videoAtual = videoStore.videos.first;
       videoStore.youtubePlayerController.load(videoStore.videoAtual.idPlatform);
+      notaVideo = NOTAPADRAO;
     }
     else{
       progressDialogService.hideLoading(repositoryDto.statusMessage, MessageManagerService.MESSAGE_ERROR);

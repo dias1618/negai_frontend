@@ -1,3 +1,4 @@
+import 'package:aquila_frontend_main/app/modules/home/home_controller.dart';
 import 'package:aquila_frontend_main/app/shared/components/star_rating_widget.dart';
 import 'package:aquila_frontend_main/app/stores/video.store.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ class RatingVideoComponent extends StatefulWidget {
 class _RatingVideoComponentState extends State<RatingVideoComponent> {
 
   VideoStore videoStore = Modular.get<VideoStore>();
+  HomeController homeController = Modular.get<HomeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +22,9 @@ class _RatingVideoComponentState extends State<RatingVideoComponent> {
         children: <Widget>[
           StarRating(
             onChanged: (newValue){
-              //cadastrarJogadorController.nivelJogador = newValue;
+              homeController.notaVideo = newValue;
             },
-            value: 5,
+            value: homeController.notaVideo,
           ),
           Spacer(),
           Text(

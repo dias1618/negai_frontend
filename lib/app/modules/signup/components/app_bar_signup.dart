@@ -1,4 +1,4 @@
-import 'package:aquila_frontend_main/app/modules/signup/signup_controller.dart';
+import 'package:negai_frontend_main/app/modules/signup/signup_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -25,11 +25,14 @@ class _AppBarSignupState extends State<AppBarSignup> {
         child: Observer(
           builder: (_) => Visibility(
             visible: signupController.listTabViewModel != null && signupController.listTabViewModel.length > 0,
-            child: Text(
-              (signupController.listTabViewModel != null ? 
-              signupController.listTabViewModel[signupController.tabController.index].titulo : 
-              ""), 
-              textAlign: TextAlign.center,
+            child: Padding(
+              padding: EdgeInsets.only(right: 45.0),
+              child: Text(
+                (signupController.listTabViewModel != null ? 
+                signupController.listTabViewModel[signupController.tabController.index].titulo : 
+                ""), 
+                textAlign: TextAlign.center,
+              )
             )
           ),
         )
@@ -42,19 +45,6 @@ class _AppBarSignupState extends State<AppBarSignup> {
         },
         child: Icon(Icons.arrow_back)
       ),
-      actions: <Widget>[
-        Padding(
-          padding: EdgeInsets.all(10), 
-          child: GestureDetector(
-            child: Icon(Icons.arrow_forward), 
-            onTap: (){
-              setState(() {
-                signupController.listTabViewModel[signupController.tabController.index].onTapForward();  
-              });
-            },
-          )
-        )
-      ],
     );
   }
 }

@@ -1,21 +1,18 @@
-import 'package:aquila_frontend_main/app/modules/home/home_module.dart';
-import 'package:aquila_frontend_main/app/modules/login/login_module.dart';
-import 'package:aquila_frontend_main/app/modules/signup/signup_module.dart';
-import 'package:aquila_frontend_main/app/shared/manager-repositories/dio_repository_manager.dart';
-import 'package:aquila_frontend_main/app/stores/usuario.store.dart';
-import 'package:aquila_frontend_main/app/stores/video.store.dart';
+import 'package:negai_frontend_main/app/modules/home/home_module.dart';
+import 'package:negai_frontend_main/app/modules/login/login_module.dart';
+import 'package:negai_frontend_main/app/modules/signup/signup_module.dart';
+import 'package:negai_frontend_main/app/stores/usuario.store.dart';
 
 import 'app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
-import 'package:aquila_frontend_main/app/app_widget.dart';
+import 'package:negai_frontend_main/app/app_widget.dart';
 
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
     Bind((i) => AppController()),
     Bind((i) => UsuarioStore()),
-    Bind((i) => VideoStore()),
   ];
 
   @override

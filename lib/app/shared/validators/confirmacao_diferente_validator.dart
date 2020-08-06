@@ -1,4 +1,4 @@
-import 'package:aquila_frontend_main/app/shared/validators/validator.dart';
+import 'package:negai_frontend_main/app/shared/validators/validator.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmacaoDiferenteValidator implements Validator{

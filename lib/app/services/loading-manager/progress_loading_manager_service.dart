@@ -1,7 +1,7 @@
-import 'package:aquila_frontend_main/app/services/loading-manager/loading_manager_service.dart';
-import 'package:aquila_frontend_main/app/services/message-manager/message.dart';
-import 'package:aquila_frontend_main/app/services/message-manager/message_manager_service.dart';
-import 'package:aquila_frontend_main/app/services/message-manager/toasty_message_manager_service.dart';
+import 'package:negai_frontend_main/app/services/loading-manager/loading_manager_service.dart';
+import 'package:negai_frontend_main/app/services/message-manager/message.dart';
+import 'package:negai_frontend_main/app/services/message-manager/message_manager_service.dart';
+import 'package:negai_frontend_main/app/services/message-manager/toasty_message_manager_service.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 class ProgressLoadingManagerService implements LoadingManagerService {

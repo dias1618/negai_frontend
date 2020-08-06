@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:aquila_frontend_main/app/models/model.dart';
-import 'package:aquila_frontend_main/app/shared/manager-repositories/parameter_repository.dart';
-import 'package:aquila_frontend_main/app/shared/manager-repositories/repository.dto.dart';
-import 'package:aquila_frontend_main/app/shared/manager-repositories/repository_manager.dart';
+import 'package:negai_frontend_main/app/models/model.dart';
+import 'package:negai_frontend_main/app/shared/manager-repositories/parameter_repository.dart';
+import 'package:negai_frontend_main/app/shared/manager-repositories/repository.dto.dart';
+import 'package:negai_frontend_main/app/shared/manager-repositories/repository_manager.dart';
 import 'package:dio/dio.dart';
 
 class DioRepositoryManager implements RepositoryManager{

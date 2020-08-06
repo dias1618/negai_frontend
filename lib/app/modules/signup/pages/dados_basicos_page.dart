@@ -1,11 +1,13 @@
-import 'package:aquila_frontend_main/app/modules/login/components/id_component.dart';
-import 'package:aquila_frontend_main/app/modules/signup/components/confirmar_senha_component.dart';
-import 'package:aquila_frontend_main/app/modules/signup/components/email_component.dart';
-import 'package:aquila_frontend_main/app/modules/signup/components/nome_component.dart';
-import 'package:aquila_frontend_main/app/modules/signup/components/senha_component.dart';
-import 'package:aquila_frontend_main/app/modules/signup/signup_controller.dart';
+import 'package:negai_frontend_main/app/modules/login/components/id_component.dart';
+import 'package:negai_frontend_main/app/modules/signup/components/confirmar_senha_component.dart';
+import 'package:negai_frontend_main/app/modules/signup/components/email_component.dart';
+import 'package:negai_frontend_main/app/modules/signup/components/nome_component.dart';
+import 'package:negai_frontend_main/app/modules/signup/components/senha_component.dart';
+import 'package:negai_frontend_main/app/modules/signup/signup_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../components/cadastrar_component.dart';
 
 class DadosBasicosPage extends StatefulWidget {
   @override
@@ -49,6 +51,7 @@ class _DadosBasicosPageState extends State<DadosBasicosPage> {
                     confirmarSenhaController: signupController.confirmarSenhaController(),
                     senhaController: signupController.senhaController(),
                   ),
+                  CadastrarComponent()
                 ]
               )
             ),

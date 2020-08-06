@@ -1,17 +1,16 @@
-import 'package:aquila_frontend_main/app/models/login.viewmodel.dart';
-import 'package:aquila_frontend_main/app/models/usuario-categoria.model.dart';
-import 'package:aquila_frontend_main/app/models/usuario.model.dart';
-import 'package:aquila_frontend_main/app/shared/manager-repositories/dio_repository_manager.dart';
-import 'package:aquila_frontend_main/app/shared/manager-repositories/parameter_repository.dart';
-import 'package:aquila_frontend_main/app/shared/manager-repositories/repository.dto.dart';
-import 'package:aquila_frontend_main/app/shared/manager-repositories/repository_manager.dart';
+import 'package:negai_frontend_main/app/models/login.viewmodel.dart';
+import 'package:negai_frontend_main/app/models/usuario.model.dart';
+import 'package:negai_frontend_main/app/shared/manager-repositories/dio_repository_manager.dart';
+import 'package:negai_frontend_main/app/shared/manager-repositories/parameter_repository.dart';
+import 'package:negai_frontend_main/app/shared/manager-repositories/repository.dto.dart';
+import 'package:negai_frontend_main/app/shared/manager-repositories/repository_manager.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class UsuarioRespository{
 
   RepositoryManager repositoryManager = Modular.get<DioRepositoryManager>();
 
-  Future<RepositoryDto> createUsuario(UsuarioModel usuario, List<UsuarioCategoriaModel> usuariosCategorias) async{
+  Future<RepositoryDto> createUsuario(UsuarioModel usuario) async{
 
     RepositoryDto repositoryDto = await repositoryManager.create(
       ParameterRepository(
@@ -19,10 +18,7 @@ class UsuarioRespository{
           "path": "/auth/signup"
         }
       ), 
-      {
-        "usuario": usuario.toJson(),
-        "usuarioCategorias": usuariosCategorias.map((usuarioCategoria) => usuarioCategoria.toJson()).toList()
-      }
+      usuario.toJson()
     );
 
     return repositoryDto;

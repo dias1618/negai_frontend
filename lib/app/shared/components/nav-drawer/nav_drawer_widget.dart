@@ -1,5 +1,5 @@
-import 'package:aquila_frontend_main/app/shared/components/nav-drawer/components/drawer_header_component.dart';
-import 'package:aquila_frontend_main/app/shared/components/nav-drawer/components/drawer_item_component.dart';
+import 'package:negai_frontend_main/app/shared/components/nav-drawer/components/drawer_header_component.dart';
+import 'package:negai_frontend_main/app/shared/components/nav-drawer/components/drawer_item_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

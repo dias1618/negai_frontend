@@ -8,7 +8,7 @@ class LogoComponent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           new Image.asset(
-            "assets/images/logo.png",
+            "assets/images/logo.jpg",
             height: 150.0,
             width: 210.0,
             fit: BoxFit.scaleDown,

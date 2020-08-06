@@ -1,8 +1,8 @@
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:aquila_frontend_main/app/modules/signup/signup_controller.dart';
-import 'package:aquila_frontend_main/app/modules/signup/signup_module.dart';
+import 'package:negai_frontend_main/app/modules/signup/signup_controller.dart';
+import 'package:negai_frontend_main/app/modules/signup/signup_module.dart';
 
 void main() {
   initModule(SignupModule());

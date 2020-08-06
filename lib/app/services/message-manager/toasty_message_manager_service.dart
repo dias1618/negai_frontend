@@ -1,5 +1,5 @@
-import 'package:aquila_frontend_main/app/services/message-manager/message.dart';
-import 'package:aquila_frontend_main/app/services/message-manager/message_manager_service.dart';
+import 'package:negai_frontend_main/app/services/message-manager/message.dart';
+import 'package:negai_frontend_main/app/services/message-manager/message_manager_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';

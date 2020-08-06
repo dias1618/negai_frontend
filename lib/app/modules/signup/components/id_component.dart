@@ -1,5 +1,5 @@
-import 'package:aquila_frontend_main/app/shared/validators/empty_validator.dart';
-import 'package:aquila_frontend_main/app/shared/validators/field_validator.dart';
+import 'package:negai_frontend_main/app/shared/validators/empty_validator.dart';
+import 'package:negai_frontend_main/app/shared/validators/field_validator.dart';
 import 'package:flutter/material.dart';
 
 class IdComponent extends StatefulWidget {

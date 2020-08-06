@@ -1,4 +1,4 @@
-# aquila_frontend_main
+# negai_frontend_main
 
 A new Flutter project. Created by Slidy
 

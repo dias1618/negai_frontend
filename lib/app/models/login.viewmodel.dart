@@ -1,4 +1,4 @@
-import 'package:aquila_frontend_main/app/models/viewmodel.dart';
+import 'package:negai_frontend_main/app/models/viewmodel.dart';
 
 class LoginViewModel implements ViewModel{
   String login;

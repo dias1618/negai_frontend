@@ -26,7 +26,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           left: (this.leading ? 0 : 10)
         ),
         child: Text(
-          (title != null ? title : "Aquila"),
+          (title != null ? title : "negai"),
           style: TextStyle(
             color: Theme.of(context).accentColor,
             fontSize: (title.length > 10 ? 16.0 : 18.0)

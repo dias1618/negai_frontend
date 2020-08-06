@@ -121,21 +121,6 @@ mixin _$SignupController on _SignupControllerBase, Store {
     });
   }
 
-  final _$categoriasAtom = Atom(name: '_SignupControllerBase.categorias');
-
-  @override
-  ObservableList<CategoriaSelecaoViewModel> get categorias {
-    _$categoriasAtom.reportRead();
-    return super.categorias;
-  }
-
-  @override
-  set categorias(ObservableList<CategoriaSelecaoViewModel> value) {
-    _$categoriasAtom.reportWrite(value, super.categorias, () {
-      super.categorias = value;
-    });
-  }
-
   final _$_SignupControllerBaseActionController =
       ActionController(name: '_SignupControllerBase');
 
@@ -197,8 +182,7 @@ mixin _$SignupController on _SignupControllerBase, Store {
   @override
   String toString() {
     return '''
-listTabViewModel: ${listTabViewModel},
-categorias: ${categorias}
+listTabViewModel: ${listTabViewModel}
     ''';
   }
 }

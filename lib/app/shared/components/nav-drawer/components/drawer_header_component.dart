@@ -1,4 +1,4 @@
-import 'package:aquila_frontend_main/app/stores/usuario.store.dart';
+import 'package:negai_frontend_main/app/stores/usuario.store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

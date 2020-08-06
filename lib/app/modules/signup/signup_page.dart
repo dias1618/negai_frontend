@@ -1,6 +1,5 @@
-import 'package:aquila_frontend_main/app/modules/signup/components/app_bar_signup.dart';
-import 'package:aquila_frontend_main/app/modules/signup/pages/dados_basicos_page.dart';
-import 'package:aquila_frontend_main/app/modules/signup/pages/seus_gostos_page.dart';
+import 'package:negai_frontend_main/app/modules/signup/components/app_bar_signup.dart';
+import 'package:negai_frontend_main/app/modules/signup/pages/dados_basicos_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'signup_controller.dart';
@@ -22,7 +21,7 @@ class _SignupPageState extends ModularState<SignupPage, SignupController> with S
     WidgetsBinding.instance.addPostFrameCallback((_){
       signupController.init();
     });
-    signupController.tabController = TabController(vsync: this, length: 2);
+    signupController.tabController = TabController(vsync: this, length: 1);
   }
   
   @override
@@ -35,7 +34,6 @@ class _SignupPageState extends ModularState<SignupPage, SignupController> with S
         controller: signupController.tabController,
         children: [
           DadosBasicosPage(),
-          SeusGostosPage()  
         ]
       )
     );

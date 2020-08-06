@@ -1,6 +1,6 @@
-import 'package:aquila_frontend_main/app/repositories/usuario.repository.dart';
-import 'package:aquila_frontend_main/app/services/loading-manager/progress_loading_manager_service.dart';
-import 'package:aquila_frontend_main/app/shared/manager-repositories/dio_repository_manager.dart';
+import 'package:negai_frontend_main/app/repositories/usuario.repository.dart';
+import 'package:negai_frontend_main/app/services/loading-manager/progress_loading_manager_service.dart';
+import 'package:negai_frontend_main/app/shared/manager-repositories/dio_repository_manager.dart';
 import 'package:flutter/material.dart';
 
 import 'login_controller.dart';

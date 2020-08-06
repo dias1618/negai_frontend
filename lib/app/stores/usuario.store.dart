@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:aquila_frontend_main/app/models/usuario.model.dart';
+import 'package:negai_frontend_main/app/models/usuario.model.dart';
 
 part 'usuario.store.g.dart';
 

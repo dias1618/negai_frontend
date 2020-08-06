@@ -1,16 +1,12 @@
-import 'package:aquila_frontend_main/app/services/message-manager/message_manager_service.dart';
-import 'package:aquila_frontend_main/app/services/message-manager/toasty_message_manager_service.dart';
+import 'package:negai_frontend_main/app/services/message-manager/message_manager_service.dart';
+import 'package:negai_frontend_main/app/services/message-manager/toasty_message_manager_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../signup_controller.dart';
+
 class CadastrarComponent extends StatefulWidget {
-
-  final GlobalKey<FormState> globalKey;
-  final Function cadastrarUsuario;
-
-  const CadastrarComponent({Key key, this.globalKey, this.cadastrarUsuario}) : super(key: key);  
-
-
+  const CadastrarComponent({Key key}) : super(key: key);  
   @override
   CadastrarComponentState createState() => CadastrarComponentState();
 }
@@ -18,6 +14,7 @@ class CadastrarComponent extends StatefulWidget {
 class CadastrarComponentState extends State<CadastrarComponent> {
   FocusNode _focusNode = FocusNode();
   MessageManagerService messageManagerService = Modular.get<ToastyMessageManagerService>();
+  SignupController signupController = Modular.get<SignupController>();
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +33,7 @@ class CadastrarComponentState extends State<CadastrarComponent> {
           ),
           color: Theme.of(context).primaryColor,
           onPressed: (){
-            if(!widget.globalKey.currentState.validate()){
-              return;
-            }
-            widget.cadastrarUsuario(context);
+            signupController.createUsuario();
             this._focusNode.requestFocus();
           }, 
           child: Text(

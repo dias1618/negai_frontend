@@ -1,9 +1,9 @@
-import 'package:aquila_frontend_main/app/modules/login/components/cadastrar_component.dart';
-import 'package:aquila_frontend_main/app/modules/login/components/enter_component.dart';
-import 'package:aquila_frontend_main/app/modules/login/components/id_component.dart';
-import 'package:aquila_frontend_main/app/modules/login/components/logo_component.dart';
-import 'package:aquila_frontend_main/app/modules/login/components/senha_component.dart';
-import 'package:aquila_frontend_main/app/services/loading-manager/progress_loading_manager_service.dart';
+import 'package:negai_frontend_main/app/modules/login/components/cadastrar_component.dart';
+import 'package:negai_frontend_main/app/modules/login/components/enter_component.dart';
+import 'package:negai_frontend_main/app/modules/login/components/id_component.dart';
+import 'package:negai_frontend_main/app/modules/login/components/logo_component.dart';
+import 'package:negai_frontend_main/app/modules/login/components/senha_component.dart';
+import 'package:negai_frontend_main/app/services/loading-manager/progress_loading_manager_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'login_controller.dart';

@@ -6,10 +6,10 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: Modular.navigatorKey,
-      title: 'Áquila',
+      title: 'NegaiApp',
       theme: ThemeData(
-        primaryColor: Colors.brown[900],
-        accentColor: Colors.brown[200],
+        primaryColor: Colors.blue[900],
+        accentColor: Colors.white,
       ),
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,

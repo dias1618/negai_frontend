@@ -1,3 +1,4 @@
+import 'package:negai_frontend_main/app/repositories/situacao_acompanhamento.repository.dart';
 import 'package:negai_frontend_main/app/repositories/situacao_midia.repository.dart';
 
 import 'cadastro_midia_controller.dart';
@@ -9,6 +10,7 @@ class CadastroMidiaModule extends ChildModule {
   List<Bind> get binds => [
     Bind((i) => CadastroMidiaController()),
     Bind((i) => SituacaoMidiaRepository()),
+    Bind((i) => SituacaoAcompanhamentoRepository()),
   ];
 
   @override

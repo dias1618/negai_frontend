@@ -1,5 +1,7 @@
+import 'package:negai_frontend_main/app/repositories/midia.repository.dart';
 import 'package:negai_frontend_main/app/services/loading-manager/progress_loading_manager_service.dart';
 import 'package:negai_frontend_main/app/shared/manager-repositories/dio_repository_manager.dart';
+import 'package:negai_frontend_main/app/stores/grupo_midia_store.dart';
 
 import 'home_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -11,6 +13,8 @@ class HomeModule extends ChildModule {
     Bind((i) => HomeController()),
     Bind((i) => DioRepositoryManager()),
     Bind((i) => ProgressLoadingManagerService()),
+    Bind((i) => MidiaRepository()),
+    Bind((i) => GrupoMidiaStore()),
   ];
 
   @override

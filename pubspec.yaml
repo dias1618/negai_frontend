@@ -31,7 +31,7 @@ dependencies:
   progress_dialog: ^1.2.4
   youtube_player_flutter: ^7.0.0+7
   intl: ^0.16.1
-  camera: ^0.5.8+2
+  image_picker: ^0.6.7+4
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

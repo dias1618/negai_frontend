@@ -21,4 +21,7 @@ abstract class _CadastroMidiaControllerBase with Store {
   @observable
   TextEditingController iconeController = new TextEditingController();
   
+  @observable
+  TextEditingController ultimoVistoController = new TextEditingController();
+  
 }

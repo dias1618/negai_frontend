@@ -4,6 +4,7 @@ import 'package:negai_frontend_main/app/modules/cadastro-midia/components/grupo_
 import 'package:negai_frontend_main/app/modules/cadastro-midia/components/imagem_component.dart';
 import 'package:negai_frontend_main/app/modules/cadastro-midia/components/situacao_midia_component.dart';
 import 'package:negai_frontend_main/app/modules/cadastro-midia/components/titulo_component.dart';
+import 'package:negai_frontend_main/app/modules/cadastro-midia/components/ultimo_visto_component.dart';
 import 'package:negai_frontend_main/app/shared/components/custom_app_bar_widget.dart';
 import 'cadastro_midia_controller.dart';
 
@@ -22,18 +23,26 @@ class _CadastroMidiaPageState extends ModularState<CadastroMidiaPage, CadastroMi
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: true,
       appBar: CustomAppBar(
         title: widget.title,
         leading: true,
       ),
-      body: Column(
+      body: ListView(
+        shrinkWrap: true, 
+        reverse: false, 
         children: <Widget>[
-          GrupoMidiaComponent(),
-          TituloComponent(),
-          ImagemComponent(),
-          SituacaoMidiaComponent(),
-        ],
-      ),
+          Column(
+            children: <Widget>[
+              GrupoMidiaComponent(),
+              TituloComponent(),
+              ImagemComponent(),
+              SituacaoMidiaComponent(),
+              UltimoVistoComponent(),
+            ],
+          ),
+        ]
+      )
     );
   }
 }

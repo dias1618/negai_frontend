@@ -14,7 +14,7 @@ class LoginModule extends ChildModule {
     Bind((i) => DioRepositoryManager()),
     Bind((i) => UsuarioRespository()),
     Bind((i) => ProgressLoadingManagerService()),
-    Bind((i) => GlobalKey<FormState>())
+    Bind((i) => GlobalKey<FormState>(debugLabel: '1'))
   ];
 
   @override

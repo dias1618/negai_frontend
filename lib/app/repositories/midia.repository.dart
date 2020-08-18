@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:negai_frontend_main/app/models/midia.model.dart';
 import 'package:negai_frontend_main/app/shared/manager-repositories/dio_repository_manager.dart';
 import 'package:negai_frontend_main/app/shared/manager-repositories/parameter_repository.dart';
 import 'package:negai_frontend_main/app/shared/manager-repositories/repository.dto.dart';
@@ -20,5 +21,21 @@ class MidiaRepository{
 
     return repositoryDto;
   }
+
+  Future<RepositoryDto> saveMidia(Midia midia) async{
+
+    RepositoryDto repositoryDto = await repositoryManager.create(
+      ParameterRepository(
+        data: {
+          "path": "/midia"
+        }
+      ), 
+      midia.toJson()
+    );
+
+    return repositoryDto;
+  }
+
+
 
 }

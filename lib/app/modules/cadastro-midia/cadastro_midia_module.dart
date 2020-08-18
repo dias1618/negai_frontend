@@ -1,5 +1,9 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
 import 'package:negai_frontend_main/app/repositories/situacao_acompanhamento.repository.dart';
 import 'package:negai_frontend_main/app/repositories/situacao_midia.repository.dart';
+import 'package:negai_frontend_main/app/stores/grupo_midia_store.dart';
 
 import 'cadastro_midia_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -11,6 +15,8 @@ class CadastroMidiaModule extends ChildModule {
     Bind((i) => CadastroMidiaController()),
     Bind((i) => SituacaoMidiaRepository()),
     Bind((i) => SituacaoAcompanhamentoRepository()),
+    Bind((i) => LabeledGlobalKey<FormState>('1')),
+    Bind((i) => GrupoMidiaStore)
   ];
 
   @override

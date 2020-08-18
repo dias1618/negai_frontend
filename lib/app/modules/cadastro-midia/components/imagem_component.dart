@@ -11,8 +11,9 @@ class ImagemComponent extends StatefulWidget {
 class _ImagemComponentState extends State<ImagemComponent> {
   CadastroMidiaController cadastroMidiaController = Modular.get<CadastroMidiaController>();
   final ImagePicker _picker = ImagePicker();
-  PickedFile _imageFile;
   dynamic _pickImageError;
+
+  TextEditingController pathImagem;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +24,8 @@ class _ImagemComponentState extends State<ImagemComponent> {
           Expanded(
             flex: 7,
             child: TextFormField(
+              controller: pathImagem,
               readOnly: true,
-              controller: cadastroMidiaController.iconeController,
               autofocus: false,
               decoration: new InputDecoration(
                 labelText: "Ícone",
@@ -43,8 +44,8 @@ class _ImagemComponentState extends State<ImagemComponent> {
                       source: ImageSource.gallery,
                     );
                     setState(() {
-                      _imageFile = pickedFile;
-                      cadastroMidiaController.iconeController.text = _imageFile.path;
+                      cadastroMidiaController.imageFile = pickedFile;
+                      pathImagem.text = cadastroMidiaController.imageFile.path;
                     });
                   } catch (e) {
                     setState(() {

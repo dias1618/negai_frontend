@@ -20,7 +20,7 @@ class _SituacaoAcompanhamentoComponentState extends State<SituacaoAcompanhamento
       padding: EdgeInsets.all(10.0),
       child: DropdownButtonFormField<SituacaoAcompanhamento>(
         decoration: InputDecoration(
-          labelText: 'Tipo de Acompanhamento'
+          labelText: 'Situação de Acompanhamento'
         ),
         isExpanded: true,
         value: cadastroMidiaController.situacaoAcompanhamentoValue,
@@ -28,6 +28,12 @@ class _SituacaoAcompanhamentoComponentState extends State<SituacaoAcompanhamento
         iconSize: 24,
         elevation: 16,
         style: TextStyle(color: Colors.deepPurple),
+        validator: (value) {
+          if (value==null) {
+            return 'Selecione uma situação de acompanhamento';
+          }
+          return null;
+        },
         onChanged: (SituacaoAcompanhamento newValue) {
           setState(() {
             cadastroMidiaController.situacaoAcompanhamentoValue = newValue;

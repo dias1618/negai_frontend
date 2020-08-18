@@ -7,5 +7,5 @@ class UsuarioStore = _UsuarioStoreBase with _$UsuarioStore;
 
 abstract class _UsuarioStoreBase with Store{
   @observable
-  UsuarioModel usuario;
+  Usuario usuario;
 }

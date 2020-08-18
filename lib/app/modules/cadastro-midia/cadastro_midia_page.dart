@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:negai_frontend_main/app/models/situacao-acompanhamento.model.dart';
 import 'package:negai_frontend_main/app/modules/cadastro-midia/components/grupo_midia_component.dart';
 import 'package:negai_frontend_main/app/modules/cadastro-midia/components/imagem_component.dart';
+import 'package:negai_frontend_main/app/modules/cadastro-midia/components/salvar_component.dart';
 import 'package:negai_frontend_main/app/modules/cadastro-midia/components/situacao_midia_component.dart';
 import 'package:negai_frontend_main/app/modules/cadastro-midia/components/titulo_component.dart';
 import 'package:negai_frontend_main/app/modules/cadastro-midia/components/ultimo_visto_component.dart';
@@ -20,7 +21,8 @@ class CadastroMidiaPage extends StatefulWidget {
 }
 
 class _CadastroMidiaPageState extends ModularState<CadastroMidiaPage, CadastroMidiaController> {
-  //use 'controller' variable to access controller
+  LabeledGlobalKey<FormState> _formKey = Modular.get<LabeledGlobalKey<FormState>>();
+  
   
   @override
   Widget build(BuildContext context) {
@@ -34,16 +36,20 @@ class _CadastroMidiaPageState extends ModularState<CadastroMidiaPage, CadastroMi
         shrinkWrap: true, 
         reverse: false, 
         children: <Widget>[
-          Column(
-            children: <Widget>[
-              GrupoMidiaComponent(),
-              TituloComponent(),
-              ImagemComponent(),
-              SituacaoMidiaComponent(),
-              UltimoVistoComponent(),
-              SituacaoAcompanhamentoComponent()
-            ],
-          ),
+          Form(
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                GrupoMidiaComponent(),
+                TituloComponent(),
+                //ImagemComponent(),
+                SituacaoMidiaComponent(),
+                UltimoVistoComponent(),
+                SituacaoAcompanhamentoComponent(),
+                SalvarComponent()
+              ],
+            ),
+          )
         ]
       )
     );

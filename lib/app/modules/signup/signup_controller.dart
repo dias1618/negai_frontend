@@ -87,7 +87,7 @@ abstract class _SignupControllerBase with Store {
 
     progressDialogService.showLoading('Criando usuário...');
 
-    UsuarioModel usuario = UsuarioModel(
+    Usuario usuario = Usuario(
       nome: nomeController().value.text,
       login: idController().value.text,
       senha: senhaController().value.text,
@@ -97,7 +97,7 @@ abstract class _SignupControllerBase with Store {
     RepositoryDto repositoryDto = await usuarioRespository.createUsuario(usuario);
     
     if(repositoryDto.statusCode == RepositoryManager.STATUS_OK){
-      usuarioStore.usuario = UsuarioModel.fromJson(repositoryDto.data);
+      usuarioStore.usuario = Usuario.fromJson(repositoryDto.data);
       Modular.to.pushReplacementNamed('/home');
     }
     else{

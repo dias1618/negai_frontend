@@ -1,15 +1,15 @@
 import 'package:negai_frontend_main/app/models/model.dart';
 
-class UsuarioModel implements Model {
+class Usuario implements Model {
   int id;
   String nome;
   String login;
   String senha;
   String email;
 
-  UsuarioModel({this.id, this.nome, this.login, this.senha, this.email});
+  Usuario({this.id, this.nome, this.login, this.senha, this.email});
 
-  UsuarioModel.fromJson(Map<String, dynamic> json) {
+  Usuario.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     nome = json['nome'];
     login = json['login'];

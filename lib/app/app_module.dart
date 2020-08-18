@@ -16,7 +16,7 @@ class AppModule extends MainModule {
   List<Bind> get binds => [
         Bind((i) => GrupoMidiaStore()),
         Bind((i) => AppController()),
-        Bind((i) => UsuarioStore()),
+        Bind((i) => UsuarioStore())
       ];
 
   @override

@@ -50,7 +50,7 @@ abstract class _LoginControllerBase with Store {
     ));
 
     if (repositoryDto.statusCode == RepositoryManager.STATUS_OK) {
-      usuarioStore.usuario = UsuarioModel.fromJson(repositoryDto.data);
+      usuarioStore.usuario = Usuario.fromJson(repositoryDto.data);
       globalKey.currentState.reset();
       Modular.to.pushReplacementNamed('/home');
     } else {

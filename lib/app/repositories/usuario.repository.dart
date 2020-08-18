@@ -10,7 +10,7 @@ class UsuarioRespository{
 
   RepositoryManager repositoryManager = Modular.get<DioRepositoryManager>();
 
-  Future<RepositoryDto> createUsuario(UsuarioModel usuario) async{
+  Future<RepositoryDto> createUsuario(Usuario usuario) async{
 
     RepositoryDto repositoryDto = await repositoryManager.create(
       ParameterRepository(

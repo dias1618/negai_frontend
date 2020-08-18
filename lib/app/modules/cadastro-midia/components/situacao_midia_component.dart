@@ -20,7 +20,7 @@ class _SituacaoMidiaComponentState extends State<SituacaoMidiaComponent> {
       padding: EdgeInsets.all(10.0),
       child: DropdownButtonFormField<SituacaoMidia>(
         decoration: InputDecoration(
-          labelText: 'Tipo de Midia'
+          labelText: 'Situação de Midia'
         ),
         isExpanded: true,
         value: cadastroMidiaController.situacaoMidiaValue,
@@ -28,6 +28,13 @@ class _SituacaoMidiaComponentState extends State<SituacaoMidiaComponent> {
         iconSize: 24,
         elevation: 16,
         style: TextStyle(color: Colors.deepPurple),
+        validator: (value) {
+          if (value==null) {
+            return 'Selecione uma situação de mídia';
+          }
+          return null;
+        },
+        
         onChanged: (SituacaoMidia newValue) {
           setState(() {
             cadastroMidiaController.situacaoMidiaValue = newValue;

@@ -36,6 +36,12 @@ class _GrupoMidiaComponentState extends State<GrupoMidiaComponent> {
             cadastroMidiaController.grupoMidiaValue = newValue;
           });
         },
+        validator: (value) {
+          if (value==null) {
+            return 'Selecione um grupo de mídia';
+          }
+          return null;
+        },
         items: grupoMidiaStore.gruposMidia
             .map<DropdownMenuItem<GrupoMidiaViewModel>>((GrupoMidiaViewModel value) {
           return DropdownMenuItem<GrupoMidiaViewModel>(

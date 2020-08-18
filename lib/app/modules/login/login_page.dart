@@ -17,7 +17,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends ModularState<LoginPage, LoginController> {
-  final _formKey = Modular.get<GlobalKey<FormState>>();
+  GlobalKey<FormState> _formKey = Modular.get<GlobalKey<FormState>>();
   final loginController = Modular.get<LoginController>();
 
   @override

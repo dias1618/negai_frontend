@@ -8,4 +8,8 @@ class SituacaoMidiaRepository{
     SituacaoMidia(value: 2, label: 'Finalizado'),
   ];
 
+  SituacaoMidia get(int value){
+    return situacoes.firstWhere((SituacaoMidia situacaoMidia) => situacaoMidia.value == value);
+  }
+
 }

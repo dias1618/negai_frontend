@@ -8,4 +8,8 @@ class SituacaoAcompanhamentoRepository{
     SituacaoAcompanhamento(value: 2, label: 'Parado'),
   ];
 
+  SituacaoAcompanhamento get(int value){
+    return situacoes.firstWhere((SituacaoAcompanhamento situacaoAcompanhamento) => situacaoAcompanhamento.value == value);
+  }
+
 }

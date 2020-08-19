@@ -1,10 +1,13 @@
+import 'package:mobx/mobx.dart';
 import 'package:negai_frontend_main/app/models/midia.model.dart';
 
 class GrupoMidiaViewModel {
   int id;
   String titulo;
   bool expandido;
-  List<Midia> midias;
+
+  @observable
+  ObservableList<Midia> midias;
 
   GrupoMidiaViewModel({this.id, this.titulo, this.expandido, this.midias});
 
@@ -26,7 +29,7 @@ class GrupoMidiaViewModel {
 
   addMidia(Midia midia){
     if(midias == null)
-      midias = new List<Midia>();
+      midias = new ObservableList<Midia>();
 
     midias.add(midia);
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:negai_frontend_main/app/models/grupo-midia.model.dart';
 import 'package:negai_frontend_main/app/models/grupo-midia.viewmodel.dart';
 import 'package:negai_frontend_main/app/models/item-panel.viewmodel.dart';
+import 'package:negai_frontend_main/app/models/midia.model.dart';
 import 'package:negai_frontend_main/app/repositories/midia.repository.dart';
 import 'package:negai_frontend_main/app/services/loading-manager/loading_manager_service.dart';
 import 'package:negai_frontend_main/app/services/loading-manager/progress_loading_manager_service.dart';
@@ -53,11 +54,24 @@ abstract class _HomeControllerBase with Store {
     progressDialogService.showLoading('Carregando...');
     RepositoryDto repositoryDto = await midiaRepository.getGruposMidia();
     if (repositoryDto.statusCode == RepositoryManager.STATUS_OK) {
-      (repositoryDto.data as List<dynamic>).forEach((element) {
+      for(var element in repositoryDto.data) {
         GrupoMidiaViewModel grupoMidiaViewModel = GrupoMidiaViewModel.fromJson(element);
+
+        repositoryDto = await midiaRepository.getMidia(grupoMidiaViewModel.id);
+        if(repositoryDto.statusCode == RepositoryManager.STATUS_OK){
+          for(var element in repositoryDto.data){
+            grupoMidiaViewModel.addMidia(Midia.fromJson(element));
+          }
+        } else {
+          progressDialogService.hideLoading(repositoryDto.statusMessage, MessageManagerService.MESSAGE_ERROR);
+        }
+
         grupoMidiaViewModel.expandido = false;
+
+        print(grupoMidiaViewModel.toJson());
+
         grupoMidiaStore.gruposMidia.add(grupoMidiaViewModel);
-      });
+      }
       
     } else {
       progressDialogService.hideLoading(repositoryDto.statusMessage, MessageManagerService.MESSAGE_ERROR);

@@ -10,7 +10,6 @@ class MidiaRepository{
   RepositoryManager repositoryManager = Modular.get<DioRepositoryManager>();
 
   Future<RepositoryDto> getGruposMidia() async{
-
     RepositoryDto repositoryDto = await repositoryManager.read(
       ParameterRepository(
         data: {
@@ -18,12 +17,21 @@ class MidiaRepository{
         }
       )
     );
+    return repositoryDto;
+  }
 
+  Future<RepositoryDto> getMidia(int idGrupoMidia) async{
+    RepositoryDto repositoryDto = await repositoryManager.read(
+      ParameterRepository(
+        data: {
+          "path": "/midia?idGrupoMidia=$idGrupoMidia"
+        }
+      )
+    );
     return repositoryDto;
   }
 
   Future<RepositoryDto> saveMidia(Midia midia) async{
-
     RepositoryDto repositoryDto = await repositoryManager.create(
       ParameterRepository(
         data: {
@@ -32,7 +40,6 @@ class MidiaRepository{
       ), 
       midia.toJson()
     );
-
     return repositoryDto;
   }
 

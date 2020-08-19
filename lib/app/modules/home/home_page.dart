@@ -1,6 +1,7 @@
 import 'package:negai_frontend_main/app/models/grupo-midia.model.dart';
 import 'package:negai_frontend_main/app/models/grupo-midia.viewmodel.dart';
 import 'package:negai_frontend_main/app/models/item-panel.viewmodel.dart';
+import 'package:negai_frontend_main/app/modules/home/components/card_midia_component.dart';
 import 'package:negai_frontend_main/app/shared/components/custom_app_bar_widget.dart';
 import 'package:negai_frontend_main/app/shared/components/nav-drawer/nav_drawer_widget.dart';
 import 'package:negai_frontend_main/app/stores/grupo_midia_store.dart';
@@ -81,7 +82,22 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                         );
                       },
                       isExpanded: grupoMidia.expandido,
-                      body: Text('Hello'),
+                      body: Visibility(
+                        visible: grupoMidia.midias != null && grupoMidia.midias.length > 0,
+                        child: Column(
+                          children: <Widget>[
+                            ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: (grupoMidia.midias != null ? grupoMidia.midias.length : 0),
+                              itemBuilder: (context, index){
+                                return CardMidiaComponent(
+                                  midia: grupoMidia.midias[index]
+                                );
+                              }
+                            )
+                          ],
+                        )
+                      )
                     );
                   }).toList(),
                 ),

@@ -10,7 +10,13 @@ class GrupoMidia {
   GrupoMidia.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     titulo = json['titulo'];
-    midias = json['midias'];
+    if(json['midias'] != null){
+      if(midias == null)
+        midias = new List<Midia>();
+      for(var midia in json['midias']){
+        midias.add((midia is Midia ? midia : Midia.fromJson(midia)));
+      }
+    }
   }
 
   Map<String, dynamic> toJson() {

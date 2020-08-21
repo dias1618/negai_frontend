@@ -84,14 +84,18 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                                   )
                                 ),
                                 Expanded(
-                                  flex: 1,
-                                  child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      (grupoMidia.midias != null ? grupoMidia.midias.length.toString() : ""), 
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold
-                                      ),
+                                  flex: 2,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(left: 20.0),
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        (grupoMidia.midias != null ? '${grupoMidia.midias.length} cadastrado(s)' : "Nenhum cadastrado"), 
+                                        style: TextStyle(
+                                          fontStyle: FontStyle.italic,
+                                          fontSize: 13.0
+                                        ),
+                                      )
                                     )
                                   )
                                 ),

@@ -19,7 +19,7 @@ class _TituloComponentState extends State<TituloComponent> {
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: TextFormField(
-        controller: cadastroMidiaController.tituloController,
+        controller: cadastroMidiaController.cadastroMidiaViewModel.tituloController,
         autofocus: false,
         decoration: new InputDecoration(
           labelText: "Título",

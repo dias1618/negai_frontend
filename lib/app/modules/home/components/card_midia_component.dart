@@ -6,8 +6,9 @@ import 'package:negai_frontend_main/app/repositories/situacao_acompanhamento.rep
 class CardMidiaComponent extends StatefulWidget {
 
   Midia midia;
+  Function onTap;
 
-  CardMidiaComponent({this.midia});
+  CardMidiaComponent({this.midia, this.onTap});
 
   @override
   _CardMidiaComponentState createState() => _CardMidiaComponentState();
@@ -105,7 +106,7 @@ class _CardMidiaComponentState extends State<CardMidiaComponent> {
           )
         ),
         onTap: () {
-          print('teste');
+          widget.onTap(widget.midia);
         },
       )
     );

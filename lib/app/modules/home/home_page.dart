@@ -1,6 +1,6 @@
 import 'package:negai_frontend_main/app/models/grupo-midia.model.dart';
-import 'package:negai_frontend_main/app/models/grupo-midia.viewmodel.dart';
-import 'package:negai_frontend_main/app/models/item-panel.viewmodel.dart';
+import 'package:negai_frontend_main/app/viewmodels/grupo-midia.viewmodel.dart';
+import 'package:negai_frontend_main/app/viewmodels/item-panel.viewmodel.dart';
 import 'package:negai_frontend_main/app/modules/home/components/card_midia_component.dart';
 import 'package:negai_frontend_main/app/shared/components/custom_app_bar_widget.dart';
 import 'package:negai_frontend_main/app/shared/components/nav-drawer/nav_drawer_widget.dart';
@@ -69,33 +69,59 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                         return Padding(
                           padding: EdgeInsets.only(left: 10.0),
                           child: Center(
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                grupoMidia.titulo, 
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  flex: 1,
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      grupoMidia.titulo, 
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold
+                                      ),
+                                    )
+                                  )
                                 ),
-                              )
+                                Expanded(
+                                  flex: 1,
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      (grupoMidia.midias != null ? grupoMidia.midias.length.toString() : ""), 
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold
+                                      ),
+                                    )
+                                  )
+                                ),
+                              ],
                             )
+                            
+                            
                           )
                         );
                       },
                       isExpanded: grupoMidia.expandido,
                       body: Visibility(
                         visible: grupoMidia.midias != null && grupoMidia.midias.length > 0,
-                        child: Column(
-                          children: <Widget>[
-                            ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: (grupoMidia.midias != null ? grupoMidia.midias.length : 0),
-                              itemBuilder: (context, index){
-                                return CardMidiaComponent(
-                                  midia: grupoMidia.midias[index]
-                                );
-                              }
-                            )
-                          ],
+                        child: SingleChildScrollView(
+                          physics: ScrollPhysics(),
+                          child: Column(
+                            children: <Widget>[
+                              ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: (grupoMidia.midias != null ? grupoMidia.midias.length : 0),
+                                itemBuilder: (context, index){
+                                  return CardMidiaComponent(
+                                    midia: grupoMidia.midias[index],
+                                    onTap: homeController.gerenciarMidia
+                                  );
+                                }
+                              )
+                            ],
+                          )
                         )
                       )
                     );

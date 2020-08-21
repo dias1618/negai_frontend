@@ -1,15 +1,12 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:negai_frontend_main/app/models/grupo-midia.model.dart';
-import 'package:negai_frontend_main/app/models/grupo-midia.viewmodel.dart';
+import 'package:negai_frontend_main/app/viewmodels/cadastro-midia.viewmodel.dart';
 import 'package:negai_frontend_main/app/models/midia.model.dart';
-import 'package:negai_frontend_main/app/models/situacao-midia.model.dart';
-import 'package:negai_frontend_main/app/models/situacao-acompanhamento.model.dart';
 import 'package:flutter/material.dart';
 import 'package:negai_frontend_main/app/repositories/midia.repository.dart';
 import 'package:negai_frontend_main/app/services/loading-manager/loading_manager_service.dart';
 import 'package:negai_frontend_main/app/services/loading-manager/progress_loading_manager_service.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:negai_frontend_main/app/services/message-manager/message_manager_service.dart';
 import 'package:negai_frontend_main/app/shared/manager-repositories/repository.dto.dart';
 import 'package:negai_frontend_main/app/shared/manager-repositories/repository_manager.dart';
@@ -22,38 +19,40 @@ class CadastroMidiaController = _CadastroMidiaControllerBase
 
 abstract class _CadastroMidiaControllerBase with Store {
   
-  @observable
-  GrupoMidiaViewModel grupoMidiaValue;
-  @observable
-  SituacaoMidia situacaoMidiaValue;
-  @observable
-  SituacaoAcompanhamento situacaoAcompanhamentoValue;
-  @observable
-  PickedFile imageFile;
-  @observable
-  TextEditingController tituloController = new TextEditingController();
-  @observable
-  TextEditingController ultimoVistoController = new TextEditingController();
+  CadastroMidiaViewModel cadastroMidiaViewModel;
 
   GrupoMidiaStore grupoMidiaStore = Modular.get<GrupoMidiaStore>();  
   MidiaRepository midiaRespository = Modular.get<MidiaRepository>();
   LoadingManagerService progressDialogService = Modular.get<ProgressLoadingManagerService>();
 
+  bool disabledGrupoMidia;
+
+  load(Midia midia){
+    disabledGrupoMidia = midia == null;
+    print('disabledGrupoMidia = $disabledGrupoMidia');
+    cadastroMidiaViewModel = CadastroMidiaViewModel(midia: midia);
+  }
 
   Future<void> salvarMidia() async{
     
     progressDialogService.showLoading('Salvando mídia...');
     Midia midia = Midia(
-      titulo: tituloController.value.text,
-      situacaoMidia: situacaoMidiaValue.value,
-      situacaoAcompanhamento: situacaoAcompanhamentoValue.value,
-      ultimoVisto: int.parse(ultimoVistoController.value.text),
-      grupoMidia: GrupoMidia.fromJson(grupoMidiaValue.toJson()) 
+      id: cadastroMidiaViewModel.id,
+      titulo: cadastroMidiaViewModel.tituloController.value.text,
+      situacaoMidia: cadastroMidiaViewModel.situacaoMidiaValue.value,
+      situacaoAcompanhamento: cadastroMidiaViewModel.situacaoAcompanhamentoValue.value,
+      ultimoVisto: int.parse(cadastroMidiaViewModel.ultimoVistoController.value.text),
+      grupoMidia: GrupoMidia.fromJson(cadastroMidiaViewModel.grupoMidiaValue.toJson()) 
     );
     RepositoryDto repositoryDto = await midiaRespository.saveMidia(midia);
     if(repositoryDto.statusCode == RepositoryManager.STATUS_OK){
       midia = Midia.fromJson(repositoryDto.data);
-      grupoMidiaValue.addMidia(midia);
+      if(cadastroMidiaViewModel.id == null || cadastroMidiaViewModel.id <= 0){
+        cadastroMidiaViewModel.grupoMidiaValue.addMidia(midia);
+      }
+      else{
+        cadastroMidiaViewModel.grupoMidiaValue.updateMidia(midia);
+      }
       Modular.to.popUntil(ModalRoute.withName('/home'));
     }
     else{

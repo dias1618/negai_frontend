@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:negai_frontend_main/app/models/viewmodel.dart';
+import 'package:negai_frontend_main/app/viewmodels/viewmodel.dart';
 
 class ItemPanelViewModel implements ViewModel {
   

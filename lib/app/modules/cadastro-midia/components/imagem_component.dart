@@ -44,8 +44,8 @@ class _ImagemComponentState extends State<ImagemComponent> {
                       source: ImageSource.gallery,
                     );
                     setState(() {
-                      cadastroMidiaController.imageFile = pickedFile;
-                      pathImagem.text = cadastroMidiaController.imageFile.path;
+                      cadastroMidiaController.cadastroMidiaViewModel.imageFile = pickedFile;
+                      pathImagem.text = cadastroMidiaController.cadastroMidiaViewModel.imageFile.path;
                     });
                   } catch (e) {
                     setState(() {

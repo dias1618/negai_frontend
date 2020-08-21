@@ -37,4 +37,12 @@ class GrupoMidiaViewModel {
   removeMidia(Midia midia){
     midias.remove(midia);
   }
+
+  updateMidia(Midia midia){
+    for(int index=0; index < midias.length; index++){
+      if(midias[index].id == midia.id){
+        midias[index] = Midia.fromJson(midia.toJson());
+      }
+    }
+  }
 }

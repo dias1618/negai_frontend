@@ -23,7 +23,7 @@ class _SituacaoAcompanhamentoComponentState extends State<SituacaoAcompanhamento
           labelText: 'Situação de Acompanhamento'
         ),
         isExpanded: true,
-        value: cadastroMidiaController.situacaoAcompanhamentoValue,
+        value: cadastroMidiaController.cadastroMidiaViewModel.situacaoAcompanhamentoValue,
         icon: Icon(Icons.arrow_downward),
         iconSize: 24,
         elevation: 16,
@@ -36,7 +36,7 @@ class _SituacaoAcompanhamentoComponentState extends State<SituacaoAcompanhamento
         },
         onChanged: (SituacaoAcompanhamento newValue) {
           setState(() {
-            cadastroMidiaController.situacaoAcompanhamentoValue = newValue;
+            cadastroMidiaController.cadastroMidiaViewModel.situacaoAcompanhamentoValue = newValue;
           });
         },
         items: situacaoAcompanhamentoRepository.situacoes

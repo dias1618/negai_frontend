@@ -1,4 +1,4 @@
-import 'package:negai_frontend_main/app/models/login.viewmodel.dart';
+import 'package:negai_frontend_main/app/viewmodels/login.viewmodel.dart';
 import 'package:negai_frontend_main/app/models/usuario.model.dart';
 import 'package:negai_frontend_main/app/shared/manager-repositories/dio_repository_manager.dart';
 import 'package:negai_frontend_main/app/shared/manager-repositories/parameter_repository.dart';

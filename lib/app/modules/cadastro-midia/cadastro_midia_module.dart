@@ -20,7 +20,10 @@ class CadastroMidiaModule extends ChildModule {
   ];
 
   @override
-  List<Router> get routers => [Router(Modular.initialRoute, child: (_, args) => CadastroMidiaPage()),];
+  List<Router> get routers => [
+    Router('/cadastrar', child: (_, args) => CadastroMidiaPage()),
+    Router('/gerenciar', child: (_, args) => CadastroMidiaPage(midia: args.data['midia'],)),
+  ];
 
   static Inject get to => Inject<CadastroMidiaModule>.of();
 

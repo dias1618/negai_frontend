@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:negai_frontend_main/app/models/midia.model.dart';
 import 'package:negai_frontend_main/app/models/situacao-acompanhamento.model.dart';
 import 'package:negai_frontend_main/app/modules/cadastro-midia/components/grupo_midia_component.dart';
 import 'package:negai_frontend_main/app/modules/cadastro-midia/components/imagem_component.dart';
@@ -14,7 +15,8 @@ import 'cadastro_midia_controller.dart';
 class CadastroMidiaPage extends StatefulWidget {
   
   final String title;
-  const CadastroMidiaPage({Key key, this.title = "CadastroMidia"}) : super(key: key);
+  final Midia midia;
+  const CadastroMidiaPage({Key key, this.title = "CadastroMidia", this.midia}) : super(key: key);
 
   @override
   _CadastroMidiaPageState createState() => _CadastroMidiaPageState();
@@ -22,7 +24,13 @@ class CadastroMidiaPage extends StatefulWidget {
 
 class _CadastroMidiaPageState extends ModularState<CadastroMidiaPage, CadastroMidiaController> {
   LabeledGlobalKey<FormState> _formKey = Modular.get<LabeledGlobalKey<FormState>>();
-  
+  CadastroMidiaController cadastroMidiaController = Modular.get<CadastroMidiaController>();
+
+  @override 
+  void initState(){
+    super.initState();
+    cadastroMidiaController.load(widget.midia);
+  }
   
   @override
   Widget build(BuildContext context) {

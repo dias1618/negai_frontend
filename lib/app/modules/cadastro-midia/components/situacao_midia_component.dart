@@ -23,7 +23,7 @@ class _SituacaoMidiaComponentState extends State<SituacaoMidiaComponent> {
           labelText: 'Situação de Midia'
         ),
         isExpanded: true,
-        value: cadastroMidiaController.situacaoMidiaValue,
+        value: cadastroMidiaController.cadastroMidiaViewModel.situacaoMidiaValue,
         icon: Icon(Icons.arrow_downward),
         iconSize: 24,
         elevation: 16,
@@ -37,7 +37,7 @@ class _SituacaoMidiaComponentState extends State<SituacaoMidiaComponent> {
         
         onChanged: (SituacaoMidia newValue) {
           setState(() {
-            cadastroMidiaController.situacaoMidiaValue = newValue;
+            cadastroMidiaController.cadastroMidiaViewModel.situacaoMidiaValue = newValue;
           });
         },
         items: situacaoMidiaRepository.situacoes

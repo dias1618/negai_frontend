@@ -1,4 +1,4 @@
-import 'package:negai_frontend_main/app/models/viewmodel.dart';
+import 'package:negai_frontend_main/app/viewmodels/viewmodel.dart';
 
 class SignupTabViewModel implements ViewModel {
   Function onTapBack;

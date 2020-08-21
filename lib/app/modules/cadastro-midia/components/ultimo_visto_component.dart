@@ -15,7 +15,7 @@ class _UltimoVistoComponentState extends State<UltimoVistoComponent> {
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: TextFormField(
-        controller: cadastroMidiaController.ultimoVistoController,
+        controller: cadastroMidiaController.cadastroMidiaViewModel.ultimoVistoController,
         autofocus: false,
         decoration: new InputDecoration(
           labelText: "Último visto",

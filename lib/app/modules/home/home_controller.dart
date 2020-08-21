@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:negai_frontend_main/app/models/grupo-midia.model.dart';
-import 'package:negai_frontend_main/app/models/grupo-midia.viewmodel.dart';
-import 'package:negai_frontend_main/app/models/item-panel.viewmodel.dart';
+import 'package:negai_frontend_main/app/viewmodels/grupo-midia.viewmodel.dart';
+import 'package:negai_frontend_main/app/viewmodels/item-panel.viewmodel.dart';
 import 'package:negai_frontend_main/app/models/midia.model.dart';
 import 'package:negai_frontend_main/app/repositories/midia.repository.dart';
 import 'package:negai_frontend_main/app/services/loading-manager/loading_manager_service.dart';
@@ -68,8 +68,6 @@ abstract class _HomeControllerBase with Store {
 
         grupoMidiaViewModel.expandido = false;
 
-        print(grupoMidiaViewModel.toJson());
-
         grupoMidiaStore.gruposMidia.add(grupoMidiaViewModel);
       }
       
@@ -79,7 +77,11 @@ abstract class _HomeControllerBase with Store {
   }
 
   cadastrarMidia(){
-    Modular.to.pushNamed('/cadastro-midia');
+    Modular.to.pushNamed('/midia/cadastrar');
+  }
+
+  gerenciarMidia(Midia midia){
+    Modular.to.pushNamed('/midia/gerenciar', arguments: {'midia': midia});
   }
 
 }

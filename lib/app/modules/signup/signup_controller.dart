@@ -1,4 +1,4 @@
-import 'package:negai_frontend_main/app/models/signup-tab.viewmodel.dart';
+import 'package:negai_frontend_main/app/viewmodels/signup-tab.viewmodel.dart';
 import 'package:negai_frontend_main/app/models/usuario.model.dart';
 import 'package:negai_frontend_main/app/repositories/usuario.repository.dart';
 import 'package:negai_frontend_main/app/services/loading-manager/loading_manager_service.dart';

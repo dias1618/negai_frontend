@@ -24,7 +24,8 @@ class AppModule extends MainModule {
         Router(Modular.initialRoute, module: LoginModule()),
         Router('/signup', module: SignupModule()),
         Router('/home', module: HomeModule()),
-        Router('/cadastro-midia', module: CadastroMidiaModule()),
+        Router('/midia', module: CadastroMidiaModule()),
+    
       ];
 
   @override

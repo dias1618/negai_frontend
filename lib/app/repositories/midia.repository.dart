@@ -43,6 +43,17 @@ class MidiaRepository{
     return repositoryDto;
   }
 
+  Future<RepositoryDto> removerMidia(int id) async{
+    RepositoryDto repositoryDto = await repositoryManager.delete(
+      ParameterRepository(
+        data: {
+          "path": "/midia/$id"
+        }
+      ),
+    );
+    return repositoryDto;
+  }
+
 
 
 }

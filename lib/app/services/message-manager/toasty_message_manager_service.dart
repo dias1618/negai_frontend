@@ -8,8 +8,6 @@ class ToastyMessageManagerService extends Disposable implements MessageManagerSe
 
   FlutterToast flutterToast;
   
-
-
   @override
   void initMessage(BuildContext context){
     this.flutterToast = FlutterToast(context);

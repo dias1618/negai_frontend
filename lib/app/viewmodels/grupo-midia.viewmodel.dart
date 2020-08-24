@@ -34,8 +34,8 @@ class GrupoMidiaViewModel {
     midias.add(midia);
   }
 
-  removeMidia(Midia midia){
-    midias.remove(midia);
+  removeMidia(int id){
+    midias.remove(midias.firstWhere((midia) => midia.id == id));
   }
 
   updateMidia(Midia midia){

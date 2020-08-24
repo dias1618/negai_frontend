@@ -29,7 +29,6 @@ abstract class _CadastroMidiaControllerBase with Store {
 
   load(Midia midia){
     disabledGrupoMidia = midia == null;
-    print('disabledGrupoMidia = $disabledGrupoMidia');
     cadastroMidiaViewModel = CadastroMidiaViewModel(midia: midia);
   }
 
@@ -53,6 +52,21 @@ abstract class _CadastroMidiaControllerBase with Store {
       else{
         cadastroMidiaViewModel.grupoMidiaValue.updateMidia(midia);
       }
+      Modular.to.popUntil(ModalRoute.withName('/home'));
+    }
+    else{
+      progressDialogService.hideLoading(repositoryDto.statusMessage, MessageManagerService.MESSAGE_ERROR);
+    }
+
+  }
+
+  //FAZER REMOCAO DE MIDIA
+  Future<void> removerMidia() async{
+    
+    progressDialogService.showLoading('Removendo mídia...');
+    RepositoryDto repositoryDto = await midiaRespository.removerMidia(cadastroMidiaViewModel.id);
+    if(repositoryDto.statusCode == RepositoryManager.STATUS_OK){
+      cadastroMidiaViewModel.grupoMidiaValue.removeMidia(cadastroMidiaViewModel.id);
       Modular.to.popUntil(ModalRoute.withName('/home'));
     }
     else{

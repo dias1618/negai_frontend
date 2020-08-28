@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:negai_frontend_main/app/models/midia.model.dart';
-import 'package:negai_frontend_main/app/models/situacao-acompanhamento.model.dart';
 import 'package:negai_frontend_main/app/modules/cadastro-midia/components/grupo_midia_component.dart';
-import 'package:negai_frontend_main/app/modules/cadastro-midia/components/imagem_component.dart';
-import 'package:negai_frontend_main/app/modules/cadastro-midia/components/remover_component.dart';
 import 'package:negai_frontend_main/app/modules/cadastro-midia/components/salvar_component.dart';
 import 'package:negai_frontend_main/app/modules/cadastro-midia/components/situacao_midia_component.dart';
 import 'package:negai_frontend_main/app/modules/cadastro-midia/components/titulo_component.dart';
@@ -56,7 +53,6 @@ class _CadastroMidiaPageState extends ModularState<CadastroMidiaPage, CadastroMi
                 UltimoVistoComponent(),
                 SituacaoAcompanhamentoComponent(),
                 SalvarComponent(),
-                RemoverComponent()
               ],
             ),
           )

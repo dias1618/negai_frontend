@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:negai_frontend_main/app/models/grupo-midia.model.dart';
 import 'package:negai_frontend_main/app/viewmodels/grupo-midia.viewmodel.dart';
-import 'package:negai_frontend_main/app/viewmodels/item-panel.viewmodel.dart';
 import 'package:negai_frontend_main/app/models/midia.model.dart';
 import 'package:negai_frontend_main/app/repositories/midia.repository.dart';
 import 'package:negai_frontend_main/app/services/loading-manager/loading_manager_service.dart';
@@ -10,7 +9,6 @@ import 'package:negai_frontend_main/app/services/message-manager/message_manager
 import 'package:negai_frontend_main/app/shared/manager-repositories/repository.dto.dart';
 import 'package:negai_frontend_main/app/shared/manager-repositories/repository_manager.dart';
 import 'package:negai_frontend_main/app/stores/grupo_midia_store.dart';
-import 'package:negai_frontend_main/app/stores/usuario.store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
@@ -21,34 +19,8 @@ class HomeController = _HomeControllerBase with _$HomeController;
 abstract class _HomeControllerBase with Store {
 
   LoadingManagerService progressDialogService = Modular.get<ProgressLoadingManagerService>();
-  MidiaRepository midiaRepository = Modular.get<MidiaRepository>();
+    MidiaRepository midiaRepository = Modular.get<MidiaRepository>();
   GrupoMidiaStore grupoMidiaStore = Modular.get<GrupoMidiaStore>();
-
-  List<ItemPanelViewModel> items = <ItemPanelViewModel>[
-    ItemPanelViewModel(
-      isExpanded: false,
-      header: 'Header',
-      body: Padding(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          children: <Widget>[
-            Text('data'),
-            Text('data'),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                Text('data'),
-                Text('data'),
-                Text('data'),
-              ],
-            ),
-            Radio(value: null, groupValue: null, onChanged: null)  //put the children here
-          ]
-        )
-      ),
-      iconpic: Icons.image
-    ),
-  ];
 
   init() async{
     progressDialogService.showLoading('Carregando...');
@@ -56,32 +28,32 @@ abstract class _HomeControllerBase with Store {
     if (repositoryDto.statusCode == RepositoryManager.STATUS_OK) {
       for(var element in repositoryDto.data) {
         GrupoMidiaViewModel grupoMidiaViewModel = GrupoMidiaViewModel.fromJson(element);
-
-        repositoryDto = await midiaRepository.getMidia(grupoMidiaViewModel.id);
-        if(repositoryDto.statusCode == RepositoryManager.STATUS_OK){
-          for(var element in repositoryDto.data){
-            grupoMidiaViewModel.addMidia(Midia.fromJson(element));
-          }
-        } else {
-          progressDialogService.hideLoading(repositoryDto.statusMessage, MessageManagerService.MESSAGE_ERROR);
-        }
-
-        grupoMidiaViewModel.expandido = false;
-
-        grupoMidiaStore.gruposMidia.add(grupoMidiaViewModel);
+        await this.adicionarMidias(grupoMidiaViewModel);
       }
-      
     } else {
       progressDialogService.hideLoading(repositoryDto.statusMessage, MessageManagerService.MESSAGE_ERROR);
     }
   }
 
+  adicionarMidias(GrupoMidiaViewModel grupoMidiaViewModel) async{
+    RepositoryDto repositoryDto = await midiaRepository.getMidia(grupoMidiaViewModel.id);
+    if(repositoryDto.statusCode == RepositoryManager.STATUS_OK){
+      for(var element in repositoryDto.data){
+        grupoMidiaViewModel.addMidia(Midia.fromJson(element));
+      }
+    } else {
+      progressDialogService.hideLoading(repositoryDto.statusMessage, MessageManagerService.MESSAGE_ERROR);
+    }
+    grupoMidiaViewModel.expandido = false;
+    grupoMidiaStore.gruposMidia.add(grupoMidiaViewModel);
+  }
+
   cadastrarMidia(){
-    Modular.to.pushNamed('/midia/cadastrar');
+    Modular.to.pushNamed('/midia/novo');
   }
 
   gerenciarMidia(Midia midia){
-    Modular.to.pushNamed('/midia/gerenciar', arguments: {'midia': midia});
+    Modular.to.pushNamed('/midia/editor', arguments: {'midia': midia});
   }
 
 }

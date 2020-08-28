@@ -1,4 +1,5 @@
 import 'package:negai_frontend_main/app/modules/cadastro-midia/cadastro_midia_module.dart';
+import 'package:negai_frontend_main/app/modules/editor-midia/editor_midia_module.dart';
 
 import 'stores/grupo_midia_store.dart';
 import 'package:negai_frontend_main/app/modules/home/home_module.dart';
@@ -24,7 +25,8 @@ class AppModule extends MainModule {
         Router(Modular.initialRoute, module: LoginModule()),
         Router('/signup', module: SignupModule()),
         Router('/home', module: HomeModule()),
-        Router('/midia', module: CadastroMidiaModule()),
+        Router('/midia/novo', module: CadastroMidiaModule()),
+        Router('/midia/editor', module: EditorMidiaModule()),
     
       ];
 

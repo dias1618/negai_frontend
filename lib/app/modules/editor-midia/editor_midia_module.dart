@@ -5,14 +5,14 @@ import 'package:negai_frontend_main/app/repositories/situacao_acompanhamento.rep
 import 'package:negai_frontend_main/app/repositories/situacao_midia.repository.dart';
 import 'package:negai_frontend_main/app/stores/grupo_midia_store.dart';
 
-import 'cadastro_midia_controller.dart';
+import 'editor_midia_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'cadastro_midia_page.dart';
+import 'editor_midia_page.dart';
 
-class CadastroMidiaModule extends ChildModule {
+class EditorMidiaModule extends ChildModule {
   @override
   List<Bind> get binds => [
-    Bind((i) => CadastroMidiaController()),
+    Bind((i) => EditorMidiaController()),
     Bind((i) => SituacaoMidiaRepository()),
     Bind((i) => SituacaoAcompanhamentoRepository()),
     Bind((i) => LabeledGlobalKey<FormState>('1')),
@@ -21,10 +21,10 @@ class CadastroMidiaModule extends ChildModule {
 
   @override
   List<Router> get routers => [
-    Router('/', child: (_, args) => CadastroMidiaPage(title: 'Nova mídia',)),
+    Router('/', child: (_, args) => EditorMidiaPage(midia: args.data['midia'], title: 'Editar',)),
   ];
 
-  static Inject get to => Inject<CadastroMidiaModule>.of();
+  static Inject get to => Inject<EditorMidiaModule>.of();
 
 }
   

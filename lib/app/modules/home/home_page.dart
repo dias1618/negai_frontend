@@ -1,6 +1,4 @@
-import 'package:negai_frontend_main/app/models/grupo-midia.model.dart';
 import 'package:negai_frontend_main/app/viewmodels/grupo-midia.viewmodel.dart';
-import 'package:negai_frontend_main/app/viewmodels/item-panel.viewmodel.dart';
 import 'package:negai_frontend_main/app/modules/home/components/card_midia_component.dart';
 import 'package:negai_frontend_main/app/shared/components/custom_app_bar_widget.dart';
 import 'package:negai_frontend_main/app/shared/components/nav-drawer/nav_drawer_widget.dart';
@@ -13,7 +11,7 @@ import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
-  const HomePage({Key key, this.title = "Home"}) : super(key: key);
+  const HomePage({Key key, this.title = "Principal"}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -21,13 +19,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
   final homeController = Modular.get<HomeController>();
-  UsuarioStore usuarioStore = Modular.get<UsuarioStore>();
-  GrupoMidiaStore grupoMidiaStore = Modular.get<GrupoMidiaStore>();
+  final UsuarioStore usuarioStore = Modular.get<UsuarioStore>();
+  final GrupoMidiaStore grupoMidiaStore = Modular.get<GrupoMidiaStore>();
   
   @override
   void initState() {
     super.initState();
-
     homeController.init();
   }
 
@@ -101,8 +98,6 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                                 ),
                               ],
                             )
-                            
-                            
                           )
                         );
                       },

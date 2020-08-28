@@ -24,21 +24,6 @@ class NavDrawer extends StatelessWidget {
             onTap: () => {Navigator.of(context).pop()},
           ),
           DrawerItemComponent(
-            iconData: Icons.movie,
-            title: 'Videos',
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          DrawerItemComponent(
-            iconData: Icons.line_style,
-            title: 'Programações',
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          DrawerItemComponent(
-            iconData: Icons.history,
-            title: 'Histórico',
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          DrawerItemComponent(
             iconData: Icons.settings,
             title: 'Configurações',
             onTap: () => {Navigator.of(context).pop()},

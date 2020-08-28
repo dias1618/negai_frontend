@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:negai_frontend_main/app/modules/cadastro-midia/cadastro_midia_controller.dart';
+import 'package:negai_frontend_main/app/modules/editor-midia/editor_midia_controller.dart';
 
 class RemoverComponent extends StatefulWidget {
   @override
@@ -8,7 +8,7 @@ class RemoverComponent extends StatefulWidget {
 }
 
 class _RemoverComponentState extends State<RemoverComponent> {
-  CadastroMidiaController cadastroMidiaController = Modular.get<CadastroMidiaController>();
+  EditorMidiaController editorMidiaController = Modular.get<EditorMidiaController>();
   LabeledGlobalKey<FormState> globalKey = Modular.get<LabeledGlobalKey<FormState>>();
   FocusNode _focusNode = FocusNode();
   
@@ -27,7 +27,7 @@ class _RemoverComponentState extends State<RemoverComponent> {
           color: Theme.of(context).errorColor,
           onPressed: ()async {
             this._focusNode.requestFocus();
-            await cadastroMidiaController.removerMidia();
+            await editorMidiaController.removerMidia();
           }, 
           child: Text(
             'Remover',

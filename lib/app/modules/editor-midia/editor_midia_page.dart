@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:negai_frontend_main/app/models/midia.model.dart';
 import 'package:negai_frontend_main/app/modules/editor-midia/components/remover_component.dart';
+import 'package:negai_frontend_main/app/modules/editor-midia/components/situacao_midia_component.dart';
+import 'package:negai_frontend_main/app/modules/editor-midia/components/titulo_component.dart';
 import 'package:negai_frontend_main/app/shared/components/custom_app_bar_widget.dart';
 import 'editor_midia_controller.dart';
 
@@ -40,7 +42,10 @@ class _EditorMidiaPageState extends ModularState<EditorMidiaPage, EditorMidiaCon
           Form(
             key: _formKey,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                TituloComponent(),
+                SituacaoMidiaComponent(),
                 RemoverComponent()
               ],
             ),

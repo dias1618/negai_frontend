@@ -18,55 +18,30 @@ class EditorMidiaController = _EditorMidiaControllerBase
     with _$EditorMidiaController;
 
 abstract class _EditorMidiaControllerBase with Store {
+
+  int id;
+  String titulo;
+  String grupoMidia;
+  @observable
+  int situacaoMidia;
   
-  CadastroMidiaViewModel cadastroMidiaViewModel;
 
   GrupoMidiaStore grupoMidiaStore = Modular.get<GrupoMidiaStore>();  
   MidiaRepository midiaRespository = Modular.get<MidiaRepository>();
   LoadingManagerService progressDialogService = Modular.get<ProgressLoadingManagerService>();
 
-  bool disabledGrupoMidia;
-
   load(Midia midia){
-    disabledGrupoMidia = midia == null;
-    cadastroMidiaViewModel = CadastroMidiaViewModel(midia: midia);
+    id = midia.id;
+    titulo = midia.titulo;
+    grupoMidia = midia.grupoMidia.titulo;
+    situacaoMidia = midia.situacaoMidia;
   }
 
-  Future<void> salvarMidia() async{
-    
-    progressDialogService.showLoading('Salvando mídia...');
-    Midia midia = Midia(
-      id: cadastroMidiaViewModel.id,
-      titulo: cadastroMidiaViewModel.tituloController.value.text,
-      situacaoMidia: cadastroMidiaViewModel.situacaoMidiaValue.value,
-      situacaoAcompanhamento: cadastroMidiaViewModel.situacaoAcompanhamentoValue.value,
-      ultimoVisto: int.parse(cadastroMidiaViewModel.ultimoVistoController.value.text),
-      grupoMidia: GrupoMidia.fromJson(cadastroMidiaViewModel.grupoMidiaValue.toJson()) 
-    );
-    RepositoryDto repositoryDto = await midiaRespository.saveMidia(midia);
-    if(repositoryDto.statusCode == RepositoryManager.STATUS_OK){
-      midia = Midia.fromJson(repositoryDto.data);
-      if(cadastroMidiaViewModel.id == null || cadastroMidiaViewModel.id <= 0){
-        cadastroMidiaViewModel.grupoMidiaValue.addMidia(midia);
-      }
-      else{
-        cadastroMidiaViewModel.grupoMidiaValue.updateMidia(midia);
-      }
-      Modular.to.popUntil(ModalRoute.withName('/home'));
-    }
-    else{
-      progressDialogService.hideLoading(repositoryDto.statusMessage, MessageManagerService.MESSAGE_ERROR);
-    }
-
-  }
-
-  //FAZER REMOCAO DE MIDIA
   Future<void> removerMidia() async{
     
     progressDialogService.showLoading('Removendo mídia...');
-    RepositoryDto repositoryDto = await midiaRespository.removerMidia(cadastroMidiaViewModel.id);
+    RepositoryDto repositoryDto = await midiaRespository.removerMidia(id);
     if(repositoryDto.statusCode == RepositoryManager.STATUS_OK){
-      cadastroMidiaViewModel.grupoMidiaValue.removeMidia(cadastroMidiaViewModel.id);
       Modular.to.popUntil(ModalRoute.withName('/home'));
     }
     else{

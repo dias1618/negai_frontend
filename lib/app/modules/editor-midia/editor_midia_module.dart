@@ -16,7 +16,7 @@ class EditorMidiaModule extends ChildModule {
     Bind((i) => SituacaoMidiaRepository()),
     Bind((i) => SituacaoAcompanhamentoRepository()),
     Bind((i) => LabeledGlobalKey<FormState>('1')),
-    Bind((i) => GrupoMidiaStore)
+    Bind((i) => GrupoMidiaStore),
   ];
 
   @override

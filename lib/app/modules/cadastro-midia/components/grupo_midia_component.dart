@@ -21,37 +21,34 @@ class _GrupoMidiaComponentState extends State<GrupoMidiaComponent> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(10.0),
-      child: IgnorePointer(
-        ignoring: !cadastroMidiaController.disabledGrupoMidia,
-        child: DropdownButtonFormField(
-          decoration: InputDecoration(
-            labelText: 'Tipo de Midia'
-          ),
-          isExpanded: true,
-          value: cadastroMidiaController.cadastroMidiaViewModel.grupoMidiaValue,
-          icon: Icon(Icons.arrow_downward),
-          iconSize: 24,
-          elevation: 16,
-          style: TextStyle(color: Colors.deepPurple),
-          onChanged: (GrupoMidiaViewModel newValue) {
-            setState(() {
-              cadastroMidiaController.cadastroMidiaViewModel.grupoMidiaValue = newValue;
-            });
-          },
-          validator: (value) {
-            if (value==null) {
-              return 'Selecione um grupo de mídia';
-            }
-            return null;
-          },
-          items: grupoMidiaStore.gruposMidia
-              .map<DropdownMenuItem<GrupoMidiaViewModel>>((GrupoMidiaViewModel value) {
-            return DropdownMenuItem<GrupoMidiaViewModel>(
-              value: value,
-              child: Text(value.titulo),
-            );
-          }).toList(),
-        )
+      child: DropdownButtonFormField(
+        decoration: InputDecoration(
+          labelText: 'Tipo de Midia'
+        ),
+        isExpanded: true,
+        value: cadastroMidiaController.cadastroMidiaViewModel.grupoMidiaValue,
+        icon: Icon(Icons.arrow_downward),
+        iconSize: 24,
+        elevation: 16,
+        style: TextStyle(color: Colors.deepPurple),
+        onChanged: (GrupoMidiaViewModel newValue) {
+          setState(() {
+            cadastroMidiaController.cadastroMidiaViewModel.grupoMidiaValue = newValue;
+          });
+        },
+        validator: (value) {
+          if (value==null) {
+            return 'Selecione um grupo de mídia';
+          }
+          return null;
+        },
+        items: grupoMidiaStore.gruposMidia
+            .map<DropdownMenuItem<GrupoMidiaViewModel>>((GrupoMidiaViewModel value) {
+          return DropdownMenuItem<GrupoMidiaViewModel>(
+            value: value,
+            child: Text(value.titulo),
+          );
+        }).toList(),
       )
     );
   }

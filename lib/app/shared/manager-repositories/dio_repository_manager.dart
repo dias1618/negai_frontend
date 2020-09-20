@@ -127,8 +127,36 @@ class DioRepositoryManager implements RepositoryManager{
 
   @override
   Future<RepositoryDto> update(ParameterRepository parametros, dynamic data) async {
-    // TODO: implement update
-    throw UnimplementedError();
+    try{
+      print(data);
+      Response response;
+      response = await dio.patch(parametros.data['path'], data: data);
+      return RepositoryDto(
+        statusCode: RepositoryManager.STATUS_OK, 
+        statusMessage: response.statusMessage, 
+        data: response.data
+      );
+    } on DioError catch(dioException){
+      if(dioException.type == DioErrorType.DEFAULT)
+        return RepositoryDto(
+          statusCode: RepositoryManager.STATUS_ERROR, 
+          statusMessage: 'Erro de conexão', 
+          data: null
+        );
+      else if(dioException.type == DioErrorType.CONNECT_TIMEOUT)
+        return RepositoryDto(
+          statusCode: RepositoryManager.STATUS_ERROR, 
+          statusMessage: 'Tempo de conexão expirou', 
+          data: null
+        );
+      else if(dioException.type == DioErrorType.RESPONSE){
+        return RepositoryDto(
+          statusCode: RepositoryManager.STATUS_ERROR, 
+          statusMessage: dioException.response.data['message'], 
+          data: null
+        );
+      }
+    }
   }
 
   RepositoryDto constructRepositoryDto(Response response){

@@ -31,6 +31,18 @@ class MidiaRepository{
     return repositoryDto;
   }
 
+  Future<RepositoryDto> updateMidia(int id, dynamic partMidia) async{
+    RepositoryDto repositoryDto = await repositoryManager.update(
+      ParameterRepository(
+        data: {
+          "path": "/midia/$id"
+        }
+      ),
+      partMidia
+    );
+    return repositoryDto;
+  }
+
   Future<RepositoryDto> saveMidia(Midia midia) async{
     RepositoryDto repositoryDto = await repositoryManager.create(
       ParameterRepository(

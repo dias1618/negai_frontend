@@ -13,8 +13,7 @@ import 'cadastro_midia_controller.dart';
 class CadastroMidiaPage extends StatefulWidget {
   
   final String title;
-  final Midia midia;
-  const CadastroMidiaPage({Key key, this.title = "CadastroMidia", this.midia}) : super(key: key);
+  const CadastroMidiaPage({Key key, this.title = "CadastroMidia", }) : super(key: key);
 
   @override
   _CadastroMidiaPageState createState() => _CadastroMidiaPageState();
@@ -27,7 +26,7 @@ class _CadastroMidiaPageState extends ModularState<CadastroMidiaPage, CadastroMi
   @override 
   void initState(){
     super.initState();
-    cadastroMidiaController.load(widget.midia);
+    cadastroMidiaController.load();
   }
   
   @override

@@ -21,15 +21,11 @@ abstract class _CadastroMidiaControllerBase with Store {
   
   CadastroMidiaViewModel cadastroMidiaViewModel;
 
-  GrupoMidiaStore grupoMidiaStore = Modular.get<GrupoMidiaStore>();  
   MidiaRepository midiaRespository = Modular.get<MidiaRepository>();
   LoadingManagerService progressDialogService = Modular.get<ProgressLoadingManagerService>();
 
-  bool disabledGrupoMidia;
-
-  load(Midia midia){
-    disabledGrupoMidia = midia == null;
-    cadastroMidiaViewModel = CadastroMidiaViewModel(midia: midia);
+  load(){
+    cadastroMidiaViewModel = CadastroMidiaViewModel();
   }
 
   Future<void> salvarMidia() async{
@@ -46,12 +42,7 @@ abstract class _CadastroMidiaControllerBase with Store {
     RepositoryDto repositoryDto = await midiaRespository.saveMidia(midia);
     if(repositoryDto.statusCode == RepositoryManager.STATUS_OK){
       midia = Midia.fromJson(repositoryDto.data);
-      if(cadastroMidiaViewModel.id == null || cadastroMidiaViewModel.id <= 0){
-        cadastroMidiaViewModel.grupoMidiaValue.addMidia(midia);
-      }
-      else{
-        cadastroMidiaViewModel.grupoMidiaValue.updateMidia(midia);
-      }
+      cadastroMidiaViewModel.grupoMidiaValue.addMidia(midia);
       Modular.to.popUntil(ModalRoute.withName('/home'));
     }
     else{

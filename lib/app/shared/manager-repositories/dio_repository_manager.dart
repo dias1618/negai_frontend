@@ -12,7 +12,7 @@ class DioRepositoryManager implements RepositoryManager{
 
   DioRepositoryManager(){
     options = new BaseOptions(
-      baseUrl: "http://10.0.0.159:3000",
+      baseUrl: "http://dias1618.host:3000",
       //baseUrl: "http://192.168.1.170:3000",
       connectTimeout: 5000,
     );

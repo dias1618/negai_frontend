@@ -19,10 +19,11 @@ class HomeController = _HomeControllerBase with _$HomeController;
 abstract class _HomeControllerBase with Store {
 
   LoadingManagerService progressDialogService = Modular.get<ProgressLoadingManagerService>();
-    MidiaRepository midiaRepository = Modular.get<MidiaRepository>();
+  MidiaRepository midiaRepository = Modular.get<MidiaRepository>();
   GrupoMidiaStore grupoMidiaStore = Modular.get<GrupoMidiaStore>();
 
   init() async{
+    grupoMidiaStore.gruposMidia = ObservableList.of([]);
     progressDialogService.showLoading('Carregando...');
     RepositoryDto repositoryDto = await midiaRepository.getGruposMidia();
     if (repositoryDto.statusCode == RepositoryManager.STATUS_OK) {
